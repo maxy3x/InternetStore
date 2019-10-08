@@ -1,0 +1,51 @@
+﻿@using System.Linq
+@model LoginViewModel
+@inject SignInManager<IdentityUser> SignInManager
+
+<h2>@ViewData["Title"]</h2>
+<section>
+    <div class="main-signin">
+        <form asp-route-returnurl="@ViewData["ReturnUrl"]" method="post" class="form-login-post">
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <div class="main-signin__middle">
+                <div class="middle__form">
+                    <input asp-for="Email" type="text" placeholder="Login" class="form-control" />
+                    <input asp-for="Password" class="form-control" placeholder="Password" />
+                    <input type="submit" value="Увійти" class="btn">
+                </div>
+                <div align="center">
+                    <p>
+                        <a asp-action="ForgotPassword">Забули пароль?</a>
+                        <a> / </a>
+                        <a asp-action="Register" asp-route-returnurl="@ViewData["ReturnUrl"]">Зареєструватись?</a>
+                    </p>
+                </div>
+            </div>
+        </form>
+        <div class="main-signin__foot">
+            <div class="foot__left">
+                <p>Увійти через:</p>
+            </div>
+            <form asp-action="ExternalLogin" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post" class="form-horizontal">
+                <div class="foot__right">
+
+                    @{var loginProviders = (await SignInManager.GetExternalAuthenticationSchemesAsync()).ToList();}
+                    <form asp-action="ExternalLogin" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post" class="form-horizontal">
+                        <div>
+                            <p>
+                                @foreach (var provider in loginProviders)
+                                {
+                                    <button type="submit" class="btn btn-default" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">@provider.Name</button>
+                                }
+                            </p>
+                        </div>
+                    </form>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}
