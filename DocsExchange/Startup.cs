@@ -3,9 +3,11 @@ using AutoMapper;
 using System.Net;
 using System.Threading.Tasks;
 using BusinessLogic;
+using BusinessLogic.Interfaces;
 using DataAccess;
 using DataAccess.Context;
 using DataAccess.Initializers;
+using DataAccess.Interfaces;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -35,7 +37,11 @@ namespace WebStore
 
             services.AddTransient<IEmployeeBusinessLogic, EmployeeBusinessLogic>();
             services.AddTransient<IEmployeeRepository, EmployeeRepository>();
-            
+            services.AddTransient<IProductBusinessLogic, ProductBusinessLogic>();
+            services.AddTransient<IProductRepository, ProductRepository>();
+            services.AddTransient<IProductImagesBusinessLogic, ProductImagesBusinessLogic>();
+            services.AddTransient<IProductImageRepository, ProductImageRepository>();
+
             services.AddDbContext<WebStoreDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 

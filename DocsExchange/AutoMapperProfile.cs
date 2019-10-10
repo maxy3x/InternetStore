@@ -18,9 +18,16 @@ namespace WebStore
             CreateMap<Employee, EmployeeView>()
                 .ForMember(x => x.Message, c => c.ResolveUsing<MessageResolver>())
                 .ForMember(x => x.UserName, c => c.ResolveUsing<UserResolver>());
-
             CreateMap<EmployeeView, Employee>()
                 .ForMember(x => x.User, c => c.ResolveUsing<UserResolverReverse>());
+
+            CreateMap<Product, ProductView>()
+                .ForMember(x => x.Message, c => c.ResolveUsing<MessageResolver>());
+            CreateMap<ProductView, Product>();
+
+            CreateMap<ProductImage, ProductImageView>()
+                .ForMember(x => x.Message, c => c.ResolveUsing<MessageResolver>());
+            CreateMap<ProductImageView, ProductImage>();
         }
     }
     

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using BusinessLogic;
+using BusinessLogic.Interfaces;
 using DataAccess;
 using WebStore.Models;
 using Domain.Models;
@@ -19,12 +20,14 @@ namespace WebStore.Controllers
     public class SearchController : Controller
     {
         private readonly IEmployeeBusinessLogic _employeeBusinessLogic;
+        private readonly IProductBusinessLogic _productBusinessLogic;
         readonly UserManager<IdentityUser> _userManager;
 
-        public SearchController(IEmployeeBusinessLogic employeeBusinessLogic, UserManager<IdentityUser> userManager)
+        public SearchController(IEmployeeBusinessLogic employeeBusinessLogic, UserManager<IdentityUser> userManager, IProductBusinessLogic productBusinessLogic)
         {
             _employeeBusinessLogic = employeeBusinessLogic;
             _userManager = userManager;
+            _productBusinessLogic = productBusinessLogic;
         }
 
         public IActionResult Index()
@@ -55,6 +58,21 @@ namespace WebStore.Controllers
             if(user.UserName != null)
                 array.Add(user.UserName);
             
+            return array.ToArray();
+        }
+        public string[] AutocompleteSearchProduct(string term)
+        {
+            if (term == null) return null;
+
+            List<Product> products = _productBusinessLogic.GetByStr(term);
+
+            List<string> array = new List<string>();
+
+            foreach (var item in products)
+            {
+                array.Add(item.Name);
+            }
+
             return array.ToArray();
         }
     }
