@@ -43,6 +43,10 @@ namespace BusinessLogic
         {
             return _repository.GetAll();
         }
+        public IEnumerable<Product> GetAllActive()
+        {
+            return _repository.GetAllActive();
+        }
 
         public IEnumerable<Product> GetByProductType(ProductType productType)
         {

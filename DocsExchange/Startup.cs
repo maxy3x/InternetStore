@@ -41,6 +41,12 @@ namespace WebStore
             services.AddTransient<IProductRepository, ProductRepository>();
             services.AddTransient<IProductImagesBusinessLogic, ProductImagesBusinessLogic>();
             services.AddTransient<IProductImageRepository, ProductImageRepository>();
+            services.AddTransient<IProductTypeBusinessLogic, ProductTypeBusinessLogic>();
+            services.AddTransient<IProductTypeRepository, ProductTypeRepository>();
+            services.AddTransient<IProductMetalBusinessLogic, ProductMetalBusinessLogic>();
+            services.AddTransient<IProductMetalRepository, ProductMetalRepository>();
+            services.AddTransient<IProductColorBusinessLogic, ProductColorBusinessLogic>();
+            services.AddTransient<IProductColorRepository, ProductColorRepository>();
 
             services.AddDbContext<WebStoreDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));

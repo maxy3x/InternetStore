@@ -29,7 +29,7 @@ namespace WebStore.Controllers
         {
             if (HttpContext.User.Identity.IsAuthenticated == true)
             {
-                ViewBag.Data = _productBusinessLogic.GetAll().Select(_mapper.Map<ProductView>);
+                ViewBag.Data = _productBusinessLogic.GetAllActive().Select(_mapper.Map<ProductView>);
                 return View();
             }
             else
@@ -44,11 +44,11 @@ namespace WebStore.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(Product product)
+        public IActionResult Create(ProductView product)
         {
             try
             {
-                _productBusinessLogic.Insert(product);
+                _productBusinessLogic.Insert(_mapper.Map<Product>(product));
                 return RedirectToAction(nameof(Index));
             }
             catch (Exception e)
@@ -117,8 +117,7 @@ namespace WebStore.Controllers
         }
         public ActionResult Delete(int id)
         {
-            var dep = _productBusinessLogic.GetById(id);
-            return View(_mapper.Map<ProductView>(dep));
+            return View(_mapper.Map<ProductView>(_productBusinessLogic.GetById(id)));
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -129,7 +128,7 @@ namespace WebStore.Controllers
                 if ((_productImagesBusinessLogic.GetByProductId(product.Id)).Any())
                 {
                     var prodView = _mapper.Map<ProductView>(_productBusinessLogic.GetById(id));
-                    prodView.Message = "Відділ використовується!";
+                    prodView.Message = "Товар використовується!";
                     return View(prodView);
                 }
                 _productBusinessLogic.Delete(id);
@@ -137,7 +136,8 @@ namespace WebStore.Controllers
             }
             catch
             {
-                return View(_mapper.Map<ProductView>(_productBusinessLogic.GetById(id)));
+                var prod = _productBusinessLogic.GetById(id);
+                return View(_mapper.Map<ProductView>(prod));
             }
         }
     }

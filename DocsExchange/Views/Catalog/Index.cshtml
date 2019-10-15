@@ -1,13 +1,13 @@
 ﻿@using WebStore.Models.Filters
 @using WebStore.ViewModels
 @using Domain.Models
-@model WebStore.Models.Filters.FilterProductsImages
+@model WebStore.Models.Filters.FilterProducts
 
 @{
-    ViewData["Title"] = "Картинки";
+    ViewData["Title"] = "Довідник товарів";
 }
 
-@*@section Scripts {
+@section Scripts {
 
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
@@ -21,11 +21,11 @@
             });
         });
     </script>
-}*@
+}
 
-    <h2>Картинки</h2>
+<h2>Довідник товарів</h2>
 
-@*@using (Html.BeginForm("Filter", "ProductImage", FormMethod.Post))
+@using (Html.BeginForm("Filter", "Product", FormMethod.Post))
 {
     <fieldset>
         <form asp-action="Filter">
@@ -48,30 +48,22 @@
             </div>
         </form>
     </fieldset>
-}*@
+}
 
-<p>
-    <a asp-action="Create"><img src="~/images/add.png"> Додати картинку</a>
-</p>
-<table class="table col-lg-4">
+
+<table class="table col-lg-7">
     <thead>
         <tr>
             <th class="col-lg-3">Назва</th>
-            <th class="col-lg-1">Дії</th>
+            <th class="col-lg-3">Тип</th>
         </tr>
     </thead>
     <tbody>
         @foreach (ProductView item in ViewBag.Data)
         {
             <tr>
-                <td class="col-lg-3">
-                    @Html.DisplayFor(modelItem => item.Name)
-                </td>
-                <td class="col-lg-1">
-                    <a asp-action="Edit" asp-route-id="@item.Id"><img src="~/images/edit_icon.png" width="20" height="20" alt="Редагувати" title="Редагувати" /></a> |
-                    @*<a asp-action="Details" asp-route-id="@item.Id"><img src="~/images/preview_icon.png" width="20" height="20" alt="Перегляд" title="Перегляд" /></a> |*@
-                    <a asp-action="Delete" asp-route-id="@item.Id"><img src="~/images/delete_icon.png" width="20" height="20" alt="Видалити" title="Видалити" /></a>
-                </td>
+                <td class="col-lg-3">@Html.DisplayFor(modelItem => item.Name)</td>
+                <td class="col-lg-3">@Html.DisplayFor(modelItem => item.ProductTypeName)</td>
             </tr>
         }
     </tbody>

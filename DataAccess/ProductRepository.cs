@@ -42,16 +42,17 @@ namespace DataAccess
             return poduct;
         }
 
-        public void Update(Product modifiedProduct)
+        public void Update(Product modifiedItem)
         {
-            throw new System.NotImplementedException();
+            _context.Product.Update(modifiedItem);
+            _context.SaveChanges();
         }
 
         public void Delete(int id)
         {
-            var employee = _context.Product
+            var product = _context.Product
                 .Single(s => s.Id == id);
-            employee.IsDeleted = true;
+            product.IsDeleted = true;
             _context.SaveChanges();
         }
 
@@ -61,6 +62,10 @@ namespace DataAccess
         }
 
         public IEnumerable<Product> GetAll()
+        {
+            return _context.Product.ToList();
+        }
+        public IEnumerable<Product> GetAllActive()
         {
             return _context.Product.Where(x => x.IsDeleted == false).ToList();
         }

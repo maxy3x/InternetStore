@@ -21,13 +21,24 @@ namespace WebStore.Controllers
     {
         private readonly IEmployeeBusinessLogic _employeeBusinessLogic;
         private readonly IProductBusinessLogic _productBusinessLogic;
+        private readonly IProductTypeBusinessLogic _productTypeBusinessLogic;
+        private readonly IProductMetalBusinessLogic _productMetalBusinessLogic;
+        private readonly IProductColorBusinessLogic _productColorBusinessLogic;
         readonly UserManager<IdentityUser> _userManager;
 
-        public SearchController(IEmployeeBusinessLogic employeeBusinessLogic, UserManager<IdentityUser> userManager, IProductBusinessLogic productBusinessLogic)
+        public SearchController(IEmployeeBusinessLogic employeeBusinessLogic, 
+                                UserManager<IdentityUser> userManager, 
+                                IProductBusinessLogic productBusinessLogic, 
+                                IProductTypeBusinessLogic productTypeBusinessLogic,
+                                IProductMetalBusinessLogic productMetalBusinessLogic,
+                                IProductColorBusinessLogic productColorBusinessLogic)
         {
             _employeeBusinessLogic = employeeBusinessLogic;
             _userManager = userManager;
             _productBusinessLogic = productBusinessLogic;
+            _productTypeBusinessLogic = productTypeBusinessLogic;
+            _productMetalBusinessLogic = productMetalBusinessLogic;
+            _productColorBusinessLogic = productColorBusinessLogic;
         }
 
         public IActionResult Index()
@@ -73,6 +84,39 @@ namespace WebStore.Controllers
                 array.Add(item.Name);
             }
 
+            return array.ToArray();
+        }
+        public string[] AutocompleteSearchProductType(string term)
+        {
+            if (term == null) return null;
+            List<ProductType> productTypes = _productTypeBusinessLogic.GetByStr(term);
+            List<string> array = new List<string>();
+            foreach (var item in productTypes)
+            {
+                array.Add(item.Name);
+            }
+            return array.ToArray();
+        }
+        public string[] AutocompleteSearchProductMetal(string term)
+        {
+            if (term == null) return null;
+            List<ProductMetal> productMetals = _productMetalBusinessLogic.GetByStr(term);
+            List<string> array = new List<string>();
+            foreach (var item in productMetals)
+            {
+                array.Add(item.Name);
+            }
+            return array.ToArray();
+        }
+        public string[] AutocompleteSearchProductColor(string term)
+        {
+            if (term == null) return null;
+            List<ProductColor> productColors = _productColorBusinessLogic.GetByStr(term);
+            List<string> array = new List<string>();
+            foreach (var item in productColors)
+            {
+                array.Add(item.Name);
+            }
             return array.ToArray();
         }
     }

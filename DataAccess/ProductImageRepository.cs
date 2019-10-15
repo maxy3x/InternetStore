@@ -59,7 +59,7 @@ namespace DataAccess
 
         public IEnumerable<ProductImage> GetAll()
         {
-            throw new System.NotImplementedException();
+            return _context.ProductImage.Where(x => x.IsDeleted == false).ToList();
         }
 
         public IEnumerable<ProductImage> GetByProductId(int productId)

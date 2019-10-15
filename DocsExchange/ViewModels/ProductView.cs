@@ -16,6 +16,7 @@ namespace WebStore.ViewModels
         public string Name { get; set; }
         [Required]
         [DisplayName("Тип")]
+        public string ProductTypeName { get; set; }
         public int ProductType { get; set; }
         [DisplayName("Вага")]
         public float Weight { get; set; }
@@ -24,12 +25,16 @@ namespace WebStore.ViewModels
         [DisplayName("Кількість")]
         public float Amount { get; set; }
         [DisplayName("Колір")]
+        public string ProductColorName { get; set; }
         public int ProductColor { get; set; }
         [DisplayName("Тип металу")]
+        public string ProductMetalName { get; set; }
         public int ProductMetal { get; set; }
         [DisplayName("Стать")]
-        public int Gender { get; set; }
+        public string GenderName { get; set; }
+        public int GenderId { get; set; }
         [DisplayName("Статус")]
+        public string ProductStatusName { get; set; }
         public int ProductStatus { get; set; }
         [DisplayName("Наявність")]
         public int AvailabilityStatus { get; set; }

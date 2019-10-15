@@ -53,26 +53,30 @@
 <p>
     <a asp-action="Create"><img src="~/images/add.png"> Створити новий</a>
 </p>
-<table class="table col-lg-4">
+<table class="table col-lg-9">
     <thead>
         <tr>
-            <th class="col-lg-3">Назва</th>
+            <th class="col-lg-2">Назва</th>
+            <th class="col-lg-2">Тип товару</th>
+            <th class="col-lg-2">Тип металу</th>
+            <th class="col-lg-2">Колір</th>
             <th class="col-lg-1">Дії</th>
         </tr>
     </thead>
     <tbody>
         @foreach (ProductView item in ViewBag.Data)
         {
-            <tr>
-                <td class="col-lg-3">
-                    @Html.DisplayFor(modelItem => item.Name)
-                </td>
-                <td class="col-lg-1">
-                    <a asp-action="Edit" asp-route-id="@item.Id"><img src="~/images/edit_icon.png" width="20" height="20" alt="Редагувати" title="Редагувати" /></a> |
-                    <a asp-action="Details" asp-route-id="@item.Id"><img src="~/images/preview_icon.png" width="20" height="20" alt="Перегляд" title="Перегляд" /></a> |
-                    <a asp-action="Delete" asp-route-id="@item.Id"><img src="~/images/delete_icon.png" width="20" height="20" alt="Видалити" title="Видалити" /></a>
-                </td>
-            </tr>
+        <tr>
+            <td class="col-lg-2">@Html.DisplayFor(modelItem => item.Name)</td>
+            <td class="col-lg-2">@Html.DisplayFor(modelItem => item.ProductTypeName)</td>
+            <td class="col-lg-2">@Html.DisplayFor(modelItem => item.ProductMetalName)</td>
+            <td class="col-lg-2">@Html.DisplayFor(modelItem => item.ProductColorName)</td>
+            <td class="col-lg-1">
+                <a asp-action="Edit" asp-route-id="@item.Id"><img src="~/images/edit_icon.png" width="20" height="20" alt="Редагувати" title="Редагувати" /></a> |
+                <a asp-action="Details" asp-route-id="@item.Id"><img src="~/images/preview_icon.png" width="20" height="20" alt="Перегляд" title="Перегляд" /></a> |
+                <a asp-action="Delete" asp-route-id="@item.Id"><img src="~/images/delete_icon.png" width="20" height="20" alt="Видалити" title="Видалити" /></a>
+            </td>
+        </tr>
         }
     </tbody>
 </table>

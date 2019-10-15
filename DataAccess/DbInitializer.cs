@@ -25,23 +25,7 @@ namespace DataAccess
                 }
                 context.SaveChanges();
             }
-            //if (!context.Employee.Any())
-            //{
-            //    var employee = new Employee[]
-            //    {
-            //        new Employee()
-            //        {
-            //            Name = "Максим Біловус",
-            //            FirstName = "Максим",
-            //            SecondName = "Біловус"
-            //        }
-            //    };
-            //    foreach (var item in employee)
-            //    {
-            //        context.Employee.Add(item);
-            //    }
-            //    context.SaveChanges();
-            //}
+            
             if (!context.ProductStatus.Any())
             {
                 var companies = new ProductStatus[]

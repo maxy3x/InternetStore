@@ -17,6 +17,14 @@
                 <td class="col-md-4">@Html.DisplayFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })</td>
             </tr>
             <tr>
+                <td class="col-md-2">@Html.LabelFor(model => model.ProductType, htmlAttributes: new { @class = "control-label" })</td>
+                <td class="col-md-4">@Html.DisplayFor(model => model.ProductTypeName, new { htmlAttributes = new { @class = "form-control" } })</td>
+            </tr>
+            <tr>
+                <td class="col-md-2">@Html.LabelFor(model => model.ProductMetal, htmlAttributes: new { @class = "control-label" })</td>
+                <td class="col-md-4">@Html.DisplayFor(model => model.ProductMetalName, new { htmlAttributes = new { @class = "form-control" } })</td>
+            </tr>
+            <tr>
                 <td class="col-md-2"><hr /></td>
                 <td class="col-md-4"><hr /></td>
             </tr>
