@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using Domain.Models.Enumerations;
 
 namespace Domain.Models
 {

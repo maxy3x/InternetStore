@@ -25,10 +25,18 @@ namespace WebStore
             CreateMap<Product, ProductView>()
                 .ForMember(x => x.Message, c => c.ResolveUsing<MessageResolver>())
                 .ForMember(x => x.ProductTypeName, c => c.ResolveUsing<ProductTypeResolver>())
-                .ForMember(x => x.ProductMetalName, c => c.ResolveUsing<ProductMetalResolver>());
+                .ForMember(x => x.ProductMetalName, c => c.ResolveUsing<ProductMetalResolver>())
+                .ForMember(x => x.ProductColorName, c => c.ResolveUsing<ProductColorResolver>())
+                .ForMember(x => x.ProductStatusName, c => c.ResolveUsing<ProductStatusResolver>())
+                .ForMember(x => x.AvailabilityStatusName, c => c.ResolveUsing<ProductAvStatusResolver>())
+                .ForMember(x => x.GenderName, c => c.ResolveUsing<GenderResolver>());
             CreateMap<ProductView, Product>()
                 .ForMember(x => x.ProductType, c => c.ResolveUsing<ProductTypeResolverReverse>())
-                .ForMember(x => x.ProductMetal, c => c.ResolveUsing<ProductMetalResolverReverse>()); ;
+                .ForMember(x => x.ProductMetal, c => c.ResolveUsing<ProductMetalResolverReverse>())
+                .ForMember(x => x.ProductColor, c => c.ResolveUsing<ProductColorResolverReverse>())
+                .ForMember(x => x.ProductStatus, c => c.ResolveUsing<ProductStatusResolverReverse>())
+                .ForMember(x => x.AvailabilityStatus, c => c.ResolveUsing<ProductAvStatusResolverReverse>())
+                .ForMember(x => x.Gender, c => c.ResolveUsing<GenderResolverReverse>());
 
             CreateMap<ProductImage, ProductImageView>()
               .ForMember(x => x.Message, c => c.ResolveUsing<MessageResolver>());
@@ -128,8 +136,8 @@ namespace WebStore
         {
             if (source.ProductMetal == 0)
                 return "";
-            var type = _productMetalBusinessLogic.GetById(source.ProductMetal);
-            return type.Name;
+            var item = _productMetalBusinessLogic.GetById(source.ProductMetal);
+            return item.Name;
         }
     }
     public class ProductMetalResolverReverse : IValueResolver<ProductView, Product, int>
@@ -141,8 +149,120 @@ namespace WebStore
         }
         public int Resolve(ProductView source, Product destination, int destMember, ResolutionContext context)
         {
-            var type = _productMetalBusinessLogic.GetByStr(source.ProductMetalName).FirstOrDefault();
-            return type.Id;
+            var item = _productMetalBusinessLogic.GetByStr(source.ProductMetalName).FirstOrDefault();
+            return item.Id;
+        }
+    }
+    public class ProductColorResolver : IValueResolver<Product, ProductView, String>
+    {
+        private readonly IProductColorBusinessLogic _productColorBusinessLogic;
+        public ProductColorResolver(IProductColorBusinessLogic productColorBusinessLogic)
+        {
+            _productColorBusinessLogic = productColorBusinessLogic;
+        }
+        public string Resolve(Product source, ProductView destination, string destMember, ResolutionContext context)
+        {
+            if (source.ProductColor == 0)
+                return "";
+            var item = _productColorBusinessLogic.GetById(source.ProductColor);
+            return item.Name;
+        }
+    }
+    public class ProductColorResolverReverse : IValueResolver<ProductView, Product, int>
+    {
+        private readonly IProductColorBusinessLogic _productColorBusinessLogic;
+        public ProductColorResolverReverse(IProductColorBusinessLogic productColorBusinessLogic)
+        {
+            _productColorBusinessLogic = productColorBusinessLogic;
+        }
+        public int Resolve(ProductView source, Product destination, int destMember, ResolutionContext context)
+        {
+            var item = _productColorBusinessLogic.GetByStr(source.ProductColorName).FirstOrDefault();
+            return item.Id;
+        }
+    }
+    public class ProductStatusResolver : IValueResolver<Product, ProductView, String>
+    {
+        private readonly IProductStatusBusinessLogic _productStatusBusinessLogic;
+        public ProductStatusResolver(IProductStatusBusinessLogic productStatusBusinessLogic)
+        {
+            _productStatusBusinessLogic = productStatusBusinessLogic;
+        }
+        public string Resolve(Product source, ProductView destination, string destMember, ResolutionContext context)
+        {
+            if (source.ProductStatus == 0)
+                return "";
+            var item = _productStatusBusinessLogic.GetById(source.ProductStatus);
+            return item.Name;
+        }
+    }
+    public class ProductStatusResolverReverse : IValueResolver<ProductView, Product, int>
+    {
+        private readonly IProductStatusBusinessLogic _productStatusBusinessLogic;
+        public ProductStatusResolverReverse(IProductStatusBusinessLogic productStatusBusinessLogic)
+        {
+            _productStatusBusinessLogic = productStatusBusinessLogic;
+        }
+        public int Resolve(ProductView source, Product destination, int destMember, ResolutionContext context)
+        {
+            var item = _productStatusBusinessLogic.GetByStr(source.ProductStatusName).FirstOrDefault();
+            return item.Id;
+        }
+    }
+    public class ProductAvStatusResolver : IValueResolver<Product, ProductView, String>
+    {
+        private readonly IProductAvStatusBusinessLogic _productStatusAvBusinessLogic;
+        public ProductAvStatusResolver(IProductAvStatusBusinessLogic productAvStatusBusinessLogic)
+        {
+            _productStatusAvBusinessLogic = productAvStatusBusinessLogic;
+        }
+        public string Resolve(Product source, ProductView destination, string destMember, ResolutionContext context)
+        {
+            if (source.AvailabilityStatus == 0)
+                return "";
+            var item = _productStatusAvBusinessLogic.GetById(source.AvailabilityStatus);
+            return item.Name;
+        }
+    }
+    public class ProductAvStatusResolverReverse : IValueResolver<ProductView, Product, int>
+    {
+        private readonly IProductAvStatusBusinessLogic _productAvStatusBusinessLogic;
+        public ProductAvStatusResolverReverse(IProductAvStatusBusinessLogic productAvStatusBusinessLogic)
+        {
+            _productAvStatusBusinessLogic = productAvStatusBusinessLogic;
+        }
+        public int Resolve(ProductView source, Product destination, int destMember, ResolutionContext context)
+        {
+            var item = _productAvStatusBusinessLogic.GetByStr(source.AvailabilityStatusName).FirstOrDefault();
+            return item.Id;
+        }
+    }
+    public class GenderResolver : IValueResolver<Product, ProductView, String>
+    {
+        private readonly IGenderBusinessLogic _genderBusinessLogic;
+        public GenderResolver(IGenderBusinessLogic genderBusinessLogic)
+        {
+            _genderBusinessLogic = genderBusinessLogic;
+        }
+        public string Resolve(Product source, ProductView destination, string destMember, ResolutionContext context)
+        {
+            if (source.Gender == 0)
+                return "";
+            var item = _genderBusinessLogic.GetById(source.Gender);
+            return item.Name;
+        }
+    }
+    public class GenderResolverReverse : IValueResolver<ProductView, Product, int>
+    {
+        private readonly IGenderBusinessLogic _genderBusinessLogic;
+        public GenderResolverReverse(IGenderBusinessLogic genderBusinessLogic)
+        {
+            _genderBusinessLogic = genderBusinessLogic;
+        }
+        public int Resolve(ProductView source, Product destination, int destMember, ResolutionContext context)
+        {
+            var item = _genderBusinessLogic.GetByStr(source.GenderName).FirstOrDefault();
+            return item.Id;
         }
     }
 }

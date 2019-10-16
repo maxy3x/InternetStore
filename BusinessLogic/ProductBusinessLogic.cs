@@ -3,7 +3,6 @@ using BusinessLogic.Interfaces;
 using DataAccess;
 using DataAccess.Interfaces;
 using Domain.Models;
-using Domain.Models.Enumerations;
 
 namespace BusinessLogic
 {

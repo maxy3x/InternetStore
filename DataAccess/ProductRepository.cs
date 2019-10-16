@@ -3,7 +3,6 @@ using System.Linq;
 using DataAccess.Context;
 using DataAccess.Interfaces;
 using Domain.Models;
-using Domain.Models.Enumerations;
 
 namespace DataAccess
 {

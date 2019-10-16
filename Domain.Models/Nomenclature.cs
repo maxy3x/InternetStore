@@ -1,6 +1,5 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
-using Domain.Models.Enumerations;
 
 namespace Domain.Models
 {

@@ -79,14 +79,27 @@ namespace DataAccess
             }
             if (!context.ProductType.Any())
             {
-                var companies = new ProductType[]
+                var types = new ProductType[]
                 {
                     new ProductType() {Name = "Ring"},
                     new ProductType() {Name = "Earring"}
                 };
-                foreach (var item in companies)
+                foreach (var item in types)
                 {
                     context.ProductType.Add(item);
+                }
+                context.SaveChanges();
+            }
+            if (!context.Gender.Any())
+            {
+                var items = new Gender[]
+                {
+                    new Gender() {Name = "Чоловіча"},
+                    new Gender() {Name = "Жіноча"}
+                };
+                foreach (var item in items)
+                {
+                    context.Gender.Add(item);
                 }
                 context.SaveChanges();
             }

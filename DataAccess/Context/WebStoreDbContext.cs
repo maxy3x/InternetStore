@@ -15,6 +15,7 @@ namespace DataAccess.Context
         public DbSet<ProductMetal> ProductMetal { get; set; }
         public DbSet<ProductType> ProductType { get; set; }
         public DbSet<Employee> Employee { get; set; }
+        public DbSet<Gender> Gender { get; set; }
         public WebStoreDbContext(DbContextOptions<WebStoreDbContext> options)
             : base(options)
         {

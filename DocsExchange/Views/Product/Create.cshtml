@@ -26,6 +26,16 @@
                 minLength: 3,
                 delay: 400
             });
+            $('#AutoCcColor').autocomplete({
+                source: '/Search/AutocompleteSearchProductColor',
+                minLength: 3,
+                delay: 400
+            });
+            $('#AutoCcGender').autocomplete({
+                source: '/Search/AutocompleteSearchGender',
+                minLength: 3,
+                delay: 400
+            });
         });
     </script>
 
@@ -51,6 +61,13 @@
                     <td class="col-md-4">@Html.EditorFor(model => model.ProductMetalName, new { htmlAttributes = new { @class = "form-control", @id = "AutoCcMetal" } })</td>
                 </tr>
                 <tr>
+                    <td class="col-md-2">@Html.LabelFor(model => model.ProductColorName, htmlAttributes: new { @class = "control-label" })</td>
+                    <td class="col-md-4">@Html.EditorFor(model => model.ProductColorName, new { htmlAttributes = new { @class = "form-control", @id = "AutoCcColor" } })</td>
+                </tr>
+                <tr>
+                    <td class="col-md-2">@Html.LabelFor(model => model.GenderName, htmlAttributes: new { @class = "control-label" })</td>
+                    <td class="col-md-4">@Html.EditorFor(model => model.GenderName, new { htmlAttributes = new { @class = "form-control", @id = "AutoCcGender" } })</td>
+                </tr>
                 <tr>
                     <td class="col-md-2">@Html.LabelFor(model => model.Weight, htmlAttributes: new { @class = "control-label" })</td>
                     <td class="col-md-4">@Html.EditorFor(model => model.Weight, new { htmlAttributes = new { @class = "form-control" } })</td>

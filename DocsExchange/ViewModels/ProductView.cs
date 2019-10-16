@@ -32,11 +32,12 @@ namespace WebStore.ViewModels
         public int ProductMetal { get; set; }
         [DisplayName("Стать")]
         public string GenderName { get; set; }
-        public int GenderId { get; set; }
+        public int Gender { get; set; }
         [DisplayName("Статус")]
         public string ProductStatusName { get; set; }
         public int ProductStatus { get; set; }
         [DisplayName("Наявність")]
+        public string AvailabilityStatusName { get; set; }
         public int AvailabilityStatus { get; set; }
     }
 }
