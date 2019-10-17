@@ -9,9 +9,11 @@ using Microsoft.AspNetCore.Mvc;
 using WebStore.Models;
 using WebStore.Models.Filters;
 using WebStore.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 
 namespace WebStore.Controllers
 {
+    [Authorize]
     public class ProductImageController : Controller
     {
         private readonly IProductImagesBusinessLogic _productImagesBusinessLogic;

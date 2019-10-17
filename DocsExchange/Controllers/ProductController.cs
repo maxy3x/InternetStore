@@ -9,9 +9,11 @@ using Microsoft.AspNetCore.Mvc;
 using WebStore.Models;
 using WebStore.Models.Filters;
 using WebStore.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 
 namespace WebStore.Controllers
 {
+    [Authorize]
     public class ProductController : Controller
     {
         private readonly IProductBusinessLogic _productBusinessLogic;
@@ -27,15 +29,15 @@ namespace WebStore.Controllers
         // GET
         public IActionResult Index()
         {
-            //if (HttpContext.User.Identity.IsAuthenticated == true)
-            //{
+            if (HttpContext.User.Identity.IsAuthenticated == true)
+            {
                 ViewBag.Data = _productBusinessLogic.GetAllActive().Select(_mapper.Map<ProductView>);
                 return View();
-            //}
-            //else
-            //{
-            //    return RedirectToAction("Error");
-            //}
+            }
+            else
+            {
+                return RedirectToAction("Error");
+            }
         }
 
         public IActionResult Create()
