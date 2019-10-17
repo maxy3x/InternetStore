@@ -24,7 +24,6 @@ namespace WebStore.Controllers
         private readonly IProductTypeBusinessLogic _productTypeBusinessLogic;
         private readonly IProductMetalBusinessLogic _productMetalBusinessLogic;
         private readonly IProductColorBusinessLogic _productColorBusinessLogic;
-        private readonly IGenderBusinessLogic _genderBusinessLogic;
         readonly UserManager<IdentityUser> _userManager;
 
         public SearchController(IEmployeeBusinessLogic employeeBusinessLogic, 
@@ -32,8 +31,7 @@ namespace WebStore.Controllers
                                 IProductBusinessLogic productBusinessLogic, 
                                 IProductTypeBusinessLogic productTypeBusinessLogic,
                                 IProductMetalBusinessLogic productMetalBusinessLogic,
-                                IProductColorBusinessLogic productColorBusinessLogic,
-                                IGenderBusinessLogic genderBusinessLogic)
+                                IProductColorBusinessLogic productColorBusinessLogic)
         {
             _employeeBusinessLogic = employeeBusinessLogic;
             _userManager = userManager;
@@ -41,7 +39,6 @@ namespace WebStore.Controllers
             _productTypeBusinessLogic = productTypeBusinessLogic;
             _productMetalBusinessLogic = productMetalBusinessLogic;
             _productColorBusinessLogic = productColorBusinessLogic;
-            _genderBusinessLogic = genderBusinessLogic;
         }
 
         public IActionResult Index()
@@ -117,17 +114,6 @@ namespace WebStore.Controllers
             List<ProductColor> productColors = _productColorBusinessLogic.GetByStr(term);
             List<string> array = new List<string>();
             foreach (var item in productColors)
-            {
-                array.Add(item.Name);
-            }
-            return array.ToArray();
-        }
-        public string[] AutocompleteSearchGender(string term)
-        {
-            if (term == null) return null;
-            List<Gender> gender = _genderBusinessLogic.GetByStr(term);
-            List<string> array = new List<string>();
-            foreach (var item in gender)
             {
                 array.Add(item.Name);
             }

@@ -27,15 +27,15 @@ namespace WebStore.Controllers
         // GET
         public IActionResult Index()
         {
-            if (HttpContext.User.Identity.IsAuthenticated == true)
-            {
+            //if (HttpContext.User.Identity.IsAuthenticated == true)
+            //{
                 ViewBag.Data = _productBusinessLogic.GetAllActive().Select(_mapper.Map<ProductView>);
                 return View();
-            }
-            else
-            {
-                return RedirectToAction("Error");
-            }
+            //}
+            //else
+            //{
+            //    return RedirectToAction("Error");
+            //}
         }
 
         public IActionResult Create()
