@@ -7,11 +7,11 @@ namespace Domain.Models
     {
         [Required]
         public string Name { get; set; }
-        public int ProductType { get; set; }
+        public int? ProductType { get; set; }
         public float Weight { get; set; }
         public float Price { get; set; }
         public float Amount { get; set; }
-        public int ProductColor { get; set; }
-        public int ProductMetal { get; set; }
+        public int? ProductColor { get; set; }
+        public int? ProductMetal { get; set; }
     }
 }

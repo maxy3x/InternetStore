@@ -19,6 +19,10 @@ namespace BusinessLogic
 
         public ProductType GetById(int? id)
         {
+            if (id == null)
+                return null;
+            if (id == 0)
+                return null;
             return _repository.GetById(id);
         }
 

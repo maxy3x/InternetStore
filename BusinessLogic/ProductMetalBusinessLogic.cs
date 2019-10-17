@@ -19,6 +19,8 @@ namespace BusinessLogic
 
         public ProductMetal GetById(int? id)
         {
+            if (id == null)
+                return null;
             return _repository.GetById(id);
         }
 

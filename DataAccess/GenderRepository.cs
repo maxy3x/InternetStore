@@ -48,7 +48,12 @@ namespace DataAccess
 
         public List<Gender> GetByStr(string searchStr)
         {
-            return _context.Gender.Where(c => c.Name.Contains(searchStr)).ToList();
+            if(searchStr != null) { 
+                return _context.Gender.Where(c => c.Name.Contains(searchStr)).ToList();
+            }
+            else { 
+            return new List<Gender>();
+            }
         }
         public IEnumerable<Gender> GetAllAvailable()
         {

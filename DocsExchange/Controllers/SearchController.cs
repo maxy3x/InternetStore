@@ -16,7 +16,7 @@ using JsonResult = Microsoft.AspNetCore.Mvc.JsonResult;
 
 namespace WebStore.Controllers
 {
-    [Authorize]
+    //[Authorize]
     public class SearchController : Controller
     {
         private readonly IEmployeeBusinessLogic _employeeBusinessLogic;
