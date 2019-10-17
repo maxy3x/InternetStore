@@ -4,7 +4,7 @@
 @model WebStore.Models.Filters.FilterProducts
 
 @{
-    ViewData["Title"] = "Довідник товарів";
+    ViewData["Title"] = "Каталог товарів";
 }
 
 @section Scripts {
@@ -23,7 +23,7 @@
     </script>
 }
 
-<h2>Довідник товарів</h2>
+<h2>Каталог товарів</h2>
 
 @using (Html.BeginForm("Filter", "Product", FormMethod.Post))
 {
@@ -53,7 +53,7 @@
 <p>
     <a asp-action="Create"><img src="~/images/add.png"> Створити новий</a>
 </p>
-<table class="table col-lg-10">
+<table class="table col-lg-9">
     <thead>
         <tr>
             <th class="col-lg-2">Назва</th>
@@ -64,7 +64,6 @@
             <th class="col-lg-1">Вага</th>
             <th class="col-lg-1">Кількість</th>
             <th class="col-lg-1">Ціна</th>
-            <th class="col-lg-1">Дії</th>
         </tr>
     </thead>
     <tbody>
@@ -79,12 +78,8 @@
                 <td class="col-lg-1">@Html.DisplayFor(modelItem => item.Weight)</td>
                 <td class="col-lg-1">@Html.DisplayFor(modelItem => item.Amount)</td>
                 <td class="col-lg-1">@Html.DisplayFor(modelItem => item.Price)</td>
-                <td class="col-lg-1">
-                    <a asp-action="Edit" asp-route-id="@item.Id"><img src="~/images/edit_icon.png" width="20" height="20" alt="Редагувати" title="Редагувати" /></a> |
-                    <a asp-action="Details" asp-route-id="@item.Id"><img src="~/images/preview_icon.png" width="20" height="20" alt="Перегляд" title="Перегляд" /></a> |
-                    <a asp-action="Delete" asp-route-id="@item.Id"><img src="~/images/delete_icon.png" width="20" height="20" alt="Видалити" title="Видалити" /></a>
-                </td>
             </tr>
         }
     </tbody>
 </table>
+    
