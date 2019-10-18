@@ -50,3 +50,16 @@ d:\INTITA\InternetStore\DataAccess\bin\Debug\netcoreapp2.0\DataAccess.dll
 d:\INTITA\InternetStore\DataAccess\bin\Debug\netcoreapp2.0\DataAccess.pdb
 d:\INTITA\InternetStore\DataAccess\bin\Debug\netcoreapp2.0\Domain.Models.dll
 d:\INTITA\InternetStore\DataAccess\bin\Debug\netcoreapp2.0\Domain.Models.pdb
+E:\INTITA\InternetStore\DataAccess\bin\Debug\netcoreapp2.0\DataAccess.deps.json
+E:\INTITA\InternetStore\DataAccess\bin\Debug\netcoreapp2.0\DataAccess.runtimeconfig.json
+E:\INTITA\InternetStore\DataAccess\bin\Debug\netcoreapp2.0\DataAccess.runtimeconfig.dev.json
+E:\INTITA\InternetStore\DataAccess\bin\Debug\netcoreapp2.0\DataAccess.dll
+E:\INTITA\InternetStore\DataAccess\bin\Debug\netcoreapp2.0\DataAccess.pdb
+E:\INTITA\InternetStore\DataAccess\bin\Debug\netcoreapp2.0\Domain.Models.dll
+E:\INTITA\InternetStore\DataAccess\bin\Debug\netcoreapp2.0\Domain.Models.pdb
+E:\INTITA\InternetStore\DataAccess\obj\Debug\netcoreapp2.0\DataAccess.csprojResolveAssemblyReference.cache
+E:\INTITA\InternetStore\DataAccess\obj\Debug\netcoreapp2.0\DataAccess.csproj.CoreCompileInputs.cache
+E:\INTITA\InternetStore\DataAccess\obj\Debug\netcoreapp2.0\DataAccess.AssemblyInfoInputs.cache
+E:\INTITA\InternetStore\DataAccess\obj\Debug\netcoreapp2.0\DataAccess.AssemblyInfo.cs
+E:\INTITA\InternetStore\DataAccess\obj\Debug\netcoreapp2.0\DataAccess.dll
+E:\INTITA\InternetStore\DataAccess\obj\Debug\netcoreapp2.0\DataAccess.pdb

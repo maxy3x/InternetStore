@@ -14075,11 +14075,11 @@
       "hideWarningsAndErrors": true
     },
     "restore": {
-      "projectUniqueName": "d:\\INTITA\\InternetStore\\DocsExchange\\WebStore.csproj",
+      "projectUniqueName": "E:\\INTITA\\InternetStore\\DocsExchange\\WebStore.csproj",
       "projectName": "WebStore",
-      "projectPath": "d:\\INTITA\\InternetStore\\DocsExchange\\WebStore.csproj",
+      "projectPath": "E:\\INTITA\\InternetStore\\DocsExchange\\WebStore.csproj",
       "packagesPath": "C:\\Users\\Max\\.nuget\\packages\\",
-      "outputPath": "d:\\INTITA\\InternetStore\\DocsExchange\\obj\\",
+      "outputPath": "E:\\INTITA\\InternetStore\\DocsExchange\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\",
@@ -14100,11 +14100,11 @@
       "frameworks": {
         "netcoreapp2.0": {
           "projectReferences": {
-            "d:\\INTITA\\InternetStore\\DataAccess\\DataAccess.csproj": {
-              "projectPath": "d:\\INTITA\\InternetStore\\DataAccess\\DataAccess.csproj"
+            "E:\\INTITA\\InternetStore\\DataAccess\\DataAccess.csproj": {
+              "projectPath": "E:\\INTITA\\InternetStore\\DataAccess\\DataAccess.csproj"
             },
-            "d:\\INTITA\\InternetStore\\BusinessLogic\\BusinessLogic.csproj": {
-              "projectPath": "d:\\INTITA\\InternetStore\\BusinessLogic\\BusinessLogic.csproj"
+            "E:\\INTITA\\InternetStore\\BusinessLogic\\BusinessLogic.csproj": {
+              "projectPath": "E:\\INTITA\\InternetStore\\BusinessLogic\\BusinessLogic.csproj"
             }
           }
         }

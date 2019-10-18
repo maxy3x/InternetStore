@@ -44,3 +44,14 @@ d:\INTITA\InternetStore\Domain.Models\obj\Debug\netcoreapp2.0\Domain.Models.Asse
 d:\INTITA\InternetStore\Domain.Models\obj\Debug\netcoreapp2.0\Domain.Models.dll
 d:\INTITA\InternetStore\Domain.Models\obj\Debug\netcoreapp2.0\Domain.Models.pdb
 d:\INTITA\InternetStore\Domain.Models\obj\Debug\netcoreapp2.0\Domain.Models.csprojResolveAssemblyReference.cache
+E:\INTITA\InternetStore\Domain.Models\bin\Debug\netcoreapp2.0\Domain.Models.deps.json
+E:\INTITA\InternetStore\Domain.Models\bin\Debug\netcoreapp2.0\Domain.Models.dll
+E:\INTITA\InternetStore\Domain.Models\bin\Debug\netcoreapp2.0\Domain.Models.pdb
+E:\INTITA\InternetStore\Domain.Models\bin\Debug\netcoreapp2.0\Microsoft.Extensions.Identity.Stores.dll
+E:\INTITA\InternetStore\Domain.Models\bin\Debug\netcoreapp2.0\Microsoft.Extensions.Identity.Stores.xml
+E:\INTITA\InternetStore\Domain.Models\obj\Debug\netcoreapp2.0\Domain.Models.csprojResolveAssemblyReference.cache
+E:\INTITA\InternetStore\Domain.Models\obj\Debug\netcoreapp2.0\Domain.Models.csproj.CoreCompileInputs.cache
+E:\INTITA\InternetStore\Domain.Models\obj\Debug\netcoreapp2.0\Domain.Models.AssemblyInfoInputs.cache
+E:\INTITA\InternetStore\Domain.Models\obj\Debug\netcoreapp2.0\Domain.Models.AssemblyInfo.cs
+E:\INTITA\InternetStore\Domain.Models\obj\Debug\netcoreapp2.0\Domain.Models.dll
+E:\INTITA\InternetStore\Domain.Models\obj\Debug\netcoreapp2.0\Domain.Models.pdb
