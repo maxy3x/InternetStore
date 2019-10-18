@@ -1,0 +1,11 @@
+.checkboxgroup {
+    width: 20em;
+    overflow: auto;
+}
+.checkboxgroup li {
+    list-style:none;
+}
+.checkboxgroup label {
+    width: 12em;
+    float: right;
+}

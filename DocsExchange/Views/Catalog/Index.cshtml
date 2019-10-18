@@ -7,6 +7,8 @@
     ViewData["Title"] = "Каталог товарів";
 }
 
+<link href="~/css/catalog.css" rel="stylesheet">
+
 @section Scripts {
 
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
@@ -82,4 +84,33 @@
         }
     </tbody>
 </table>
+<div id="checkboxes">
+    <label>Тип металу:</label>
+    <ul>
+        @foreach (ProductMetal item in ViewBag.Metals)
+        {
+            <li><input type="checkbox" id="@Html.DisplayFor(modelItem => item.Id)"> @Html.DisplayFor(modelItem => item.Name)</li>
+        }
+    </ul>
+    <label>Колір:</label>
+    <ul>
+        @foreach (ProductColor item in ViewBag.Colors)
+        {
+            <li><input type="checkbox" id="@Html.DisplayFor(modelItem => item.Id)"> @Html.DisplayFor(modelItem => item.Name)</li>
+        }
+    </ul>
+    <label>Стать:</label>
+    <ul>
+        @foreach (Gender item in ViewBag.Genders)
+        {
+            <li><input type="checkbox" id="@Html.DisplayFor(modelItem => item.Id)"> @Html.DisplayFor(modelItem => item.Name)</li>
+        }
+    </ul>
+    <ul>
+        @foreach (Gender item in ViewBag.Genders)
+        {
+            <li><input type="checkbox" id="@Html.DisplayFor(modelItem => item.Id)"> @Html.DisplayFor(modelItem => item.Name)</li>
+        }
+    </ul>
+</div>
     

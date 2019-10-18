@@ -16,25 +16,23 @@ namespace WebStore.Controllers
     {
         private readonly IProductBusinessLogic _productBusinessLogic;
         private readonly IProductImagesBusinessLogic _productImagesBusinessLogic;
-        private readonly IProductMetalBusinessLogic _productMetalBusinessLogic;
+        
         private readonly IMapper _mapper;
 
         public CatalogController(IProductBusinessLogic productBusinessLogic, 
                                 IProductImagesBusinessLogic productImagesBusinessLogic,
-                                IProductMetalBusinessLogic productMetalBusinessLogic, 
                                 IMapper mapper)
         {
             _mapper = mapper;
             _productBusinessLogic = productBusinessLogic;
             _productImagesBusinessLogic = productImagesBusinessLogic;
-            _productMetalBusinessLogic = productMetalBusinessLogic;
         }
         // GET
         public IActionResult Index()
         {
             try { 
                     ViewBag.Data = _productBusinessLogic.GetAll().Select(_mapper.Map<ProductView>);
-                    return View();
+                return View();
                 }
             catch
                 {
