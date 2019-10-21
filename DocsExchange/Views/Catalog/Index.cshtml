@@ -32,20 +32,26 @@
 
 <h2>Каталог товарів</h2>
 
-@*@using (Html.BeginForm("GetFilters", "Catalog", FormMethod.Get))
+@using (Html.BeginForm("GetFilters", "Catalog", FormMethod.Post))
 {
     <fieldset>
         <form asp-action="GetFilters">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <ul>
+                @foreach (ProductColor item in Model.ColorList)
+                    {
 
-            @Html.CheckBoxFor(model => model.ColorList, ViewBag.ColorList as IEnumerable<SelectListItem>, new { style = "width:200px; height:35px; margin-left:700px" })
+                        //<li><input type="checkbox" id="@Html.DisplayForModel(item.Id)"> @Html.DisplayForModel(item.Name)</li>
+                    }
 
+                @*@Html.CheckBoxFor(model => model.ColorList, ViewBag.ColorList as IEnumerable<SelectListItem>, new { style = "width:200px; height:35px; margin-left:700px" })*@
+            </ul>
             <div class="form-group">
                 <button type="submit" value="Шукати" style="border: none; background-color: Transparent;"><img src="~/images/search_icon.png" title="Шукати" width="25" height="25" /></button> | <a asp-action="Index">Показати всі..</a>
             </div>
         </form>
     </fieldset>
-}*@
+}
 
 <p>
     <a asp-action="Create"><img src="~/images/add.png"> Створити новий</a>

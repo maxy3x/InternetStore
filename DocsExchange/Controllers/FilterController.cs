@@ -28,70 +28,71 @@ namespace WebStore.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Filter(ProductsFilters filtersItems)
         {
-            var colorFilter = filtersItems.ColorList;
-            var metalFilter = filtersItems.MetalList;
-            var typeFilter = filtersItems.TypeList;
-            var statusFilter = filtersItems.StatusList;
-            var statusAvFilter = filtersItems.StatusAvList;
-            var genderFilter = filtersItems.GenderList;
+            throw new System.NotImplementedException();
+            //    var colorFilter = filtersItems.ColorList;
+            //    var metalFilter = filtersItems.MetalList;
+            //    var typeFilter = filtersItems.TypeList;
+            //    var statusFilter = filtersItems.StatusList;
+            //    var statusAvFilter = filtersItems.StatusAvList;
+            //    var genderFilter = filtersItems.GenderList;
 
-            var products = _productBusinessLogic
-                .GetAll()
-                .Where(@prod =>
-                    FilterByColorName(@prod, colorFilter)
-                    &&
-                    FilterByMetalName(@prod, metalFilter)
-                    &&
-                    FilterByTypeName(@prod, typeFilter)
-                    &&
-                    FilterByStatusName(@prod, statusFilter)
-                    &&
-                    FilterByStatusAvName(@prod, statusAvFilter)
-                    &&
-                    FilterByGenderName(@prod, genderFilter)
-                    ).ToList();
-            List<ProductView> models = new List<ProductView>();
-            foreach (var item in products)
-            {
-                models.Add(_mapper.Map<ProductView>(item));
-            }
-            ViewBag.Data = models.OrderBy(x => x.Name).ToList();
-            return RedirectToAction("Index", "Catalog");
-        }
-        //private bool FilterByProductName(Product @event, string prodFilter)
+            //    var products = _productBusinessLogic
+            //        .GetAll()
+            //        .Where(@prod =>
+            //            FilterByColorName(@prod, colorFilter)
+            //            &&
+            //            FilterByMetalName(@prod, metalFilter)
+            //            &&
+            //            FilterByTypeName(@prod, typeFilter)
+            //            &&
+            //            FilterByStatusName(@prod, statusFilter)
+            //            &&
+            //            FilterByStatusAvName(@prod, statusAvFilter)
+            //            &&
+            //            FilterByGenderName(@prod, genderFilter)
+            //            ).ToList();
+            //    List<ProductView> models = new List<ProductView>();
+            //    foreach (var item in products)
+            //    {
+            //        models.Add(_mapper.Map<ProductView>(item));
+            //    }
+            //    ViewBag.Data = models.OrderBy(x => x.Name).ToList();
+            //    return RedirectToAction("Index", "Catalog");
+            //}
+            //private bool FilterByProductName(Product @event, string prodFilter)
+            //{
+            //    if (String.IsNullOrEmpty(prodFilter))
+            //        return true;
+            //    if (@event.Name == null)
+            //        return false;
+            //    var dep = _productBusinessLogic.GetByStr(@event.Name).FirstOrDefault();
+            //    if (dep != null && dep.Name.Contains(prodFilter))
+            //        return true;
+            //    return false;
+            //}
+        //private bool FilterByColorName(Product @event, IEnumerable<int> filter)
         //{
-        //    if (String.IsNullOrEmpty(prodFilter))
-        //        return true;
-        //    if (@event.Name == null)
-        //        return false;
-        //    var dep = _productBusinessLogic.GetByStr(@event.Name).FirstOrDefault();
-        //    if (dep != null && dep.Name.Contains(prodFilter))
-        //        return true;
-        //    return false;
+        //    throw new System.NotImplementedException();
         //}
-        private bool FilterByColorName(Product @event, IEnumerable<int> filter)
-        {
-            throw new System.NotImplementedException();
-        }
-        private bool FilterByMetalName(Product @event, IEnumerable<int> filter)
-        {
-            throw new System.NotImplementedException();
-        }
-        private bool FilterByTypeName(Product @event, IEnumerable<int> filter)
-        {
-            throw new System.NotImplementedException();
-        }
-        private bool FilterByStatusName(Product @event, IEnumerable<int> filter)
-        {
-            throw new System.NotImplementedException();
-        }
-        private bool FilterByStatusAvName(Product @event, IEnumerable<int> filter)
-        {
-            throw new System.NotImplementedException();
-        }
-        private bool FilterByGenderName(Product @event, IEnumerable<int> filter)
-        {
-            throw new System.NotImplementedException();
+        //private bool FilterByMetalName(Product @event, IEnumerable<int> filter)
+        //{
+        //    throw new System.NotImplementedException();
+        //}
+        //private bool FilterByTypeName(Product @event, IEnumerable<int> filter)
+        //{
+        //    throw new System.NotImplementedException();
+        //}
+        //private bool FilterByStatusName(Product @event, IEnumerable<int> filter)
+        //{
+        //    throw new System.NotImplementedException();
+        //}
+        //private bool FilterByStatusAvName(Product @event, IEnumerable<int> filter)
+        //{
+        //    throw new System.NotImplementedException();
+        //}
+        //private bool FilterByGenderName(Product @event, IEnumerable<int> filter)
+        //{
+        //    throw new System.NotImplementedException();
         }
     }
 }

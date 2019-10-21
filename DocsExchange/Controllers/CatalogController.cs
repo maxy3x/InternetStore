@@ -88,7 +88,7 @@ namespace WebStore.Controllers
                 return true;
             return false;
         }
-        [HttpGet]
+        [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult GetFilters(ProductsFilters filtersEvents)
         {
