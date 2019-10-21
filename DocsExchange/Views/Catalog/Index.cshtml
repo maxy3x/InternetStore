@@ -1,7 +1,7 @@
 ﻿@using WebStore.Models.Filters
 @using WebStore.ViewModels
 @using Domain.Models
-@model WebStore.Models.Filters.FilterProducts
+@model WebStore.Models.Filters.ProductsFilters
 
 @{
     ViewData["Title"] = "Каталог товарів";
@@ -9,7 +9,7 @@
 
 <link href="~/css/catalog.css" rel="stylesheet">
 
-@section Scripts {
+@*@section Scripts {
 
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
@@ -23,34 +23,29 @@
             });
         });
     </script>
-}
+}*@
+
+<table class="table col-lg-4 content">
+
+</table>
+
 
 <h2>Каталог товарів</h2>
 
-@using (Html.BeginForm("Filter", "Product", FormMethod.Post))
+@*@using (Html.BeginForm("GetFilters", "Catalog", FormMethod.Get))
 {
     <fieldset>
-        <form asp-action="Filter">
+        <form asp-action="GetFilters">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <table class="table-condensed" id="filtersContracts">
-                <thead>
-                    <tr>
-                        <th>Назва</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>@Html.EditorFor(x => x.Name, new { htmlAttributes = new { @id = "AutoCcProd", @class = "EditorRadius" } })</td>
-                    </tr>
-                </tbody>
 
-            </table>
+            @Html.CheckBoxFor(model => model.ColorList, ViewBag.ColorList as IEnumerable<SelectListItem>, new { style = "width:200px; height:35px; margin-left:700px" })
+
             <div class="form-group">
                 <button type="submit" value="Шукати" style="border: none; background-color: Transparent;"><img src="~/images/search_icon.png" title="Шукати" width="25" height="25" /></button> | <a asp-action="Index">Показати всі..</a>
             </div>
         </form>
     </fieldset>
-}
+}*@
 
 <p>
     <a asp-action="Create"><img src="~/images/add.png"> Створити новий</a>
@@ -106,11 +101,26 @@
             <li><input type="checkbox" id="@Html.DisplayFor(modelItem => item.Id)"> @Html.DisplayFor(modelItem => item.Name)</li>
         }
     </ul>
+    <label>Тип виробу:</label>
     <ul>
-        @foreach (Gender item in ViewBag.Genders)
+        @foreach (ProductType item in ViewBag.Types)
+        {
+            <li><input type="checkbox" id="@Html.DisplayFor(modelItem => item.Id)"> @Html.DisplayFor(modelItem => item.Name)</li>
+        }
+    </ul>
+    <label>Новинки:</label>
+    <ul>
+        @foreach (ProductStatus item in ViewBag.Statuses)
+        {
+            <li><input type="checkbox" id="@Html.DisplayFor(modelItem => item.Id)"> @Html.DisplayFor(modelItem => item.Name)</li>
+        }
+    </ul>
+    <label>Наявніст:</label>
+    <ul>
+        @foreach (ProductAvailabilityStatus item in ViewBag.StatusesAv)
         {
             <li><input type="checkbox" id="@Html.DisplayFor(modelItem => item.Id)"> @Html.DisplayFor(modelItem => item.Name)</li>
         }
     </ul>
 </div>*@
-    
+

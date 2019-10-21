@@ -10,6 +10,8 @@ using WebStore.Models;
 using WebStore.Models.Filters;
 using WebStore.ViewModels;
 using Microsoft.AspNetCore.Authorization;
+using DataAccess.Context;
+using DataAccess;
 
 namespace WebStore.Controllers
 {
@@ -19,8 +21,11 @@ namespace WebStore.Controllers
         private readonly IProductBusinessLogic _productBusinessLogic;
         private readonly IProductImagesBusinessLogic _productImagesBusinessLogic;
         private readonly IMapper _mapper;
+        
 
-        public ProductController(IProductBusinessLogic productBusinessLogic, IProductImagesBusinessLogic productImagesBusinessLogic, IMapper mapper)
+        public ProductController(IProductBusinessLogic productBusinessLogic, 
+                                IProductImagesBusinessLogic productImagesBusinessLogic, 
+                                IMapper mapper)
         {
             _mapper = mapper;
             _productBusinessLogic = productBusinessLogic;
@@ -29,6 +34,7 @@ namespace WebStore.Controllers
         // GET
         public IActionResult Index()
         {
+            
             if (HttpContext.User.Identity.IsAuthenticated == true)
             {
                 ViewBag.Data = _productBusinessLogic.GetAllActive().Select(_mapper.Map<ProductView>);
@@ -81,7 +87,7 @@ namespace WebStore.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Filter(FilterProducts filtersEvents)
+        public ActionResult Filter(ProductsFilters filtersEvents)
         {
             var prodFilter = filtersEvents.Name;
             var products = _productBusinessLogic

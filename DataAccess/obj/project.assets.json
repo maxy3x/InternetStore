@@ -13475,11 +13475,11 @@
       "hideWarningsAndErrors": true
     },
     "restore": {
-      "projectUniqueName": "E:\\INTITA\\InternetStore\\DataAccess\\DataAccess.csproj",
+      "projectUniqueName": "D:\\INTITA\\InternetStore\\DataAccess\\DataAccess.csproj",
       "projectName": "DataAccess",
-      "projectPath": "E:\\INTITA\\InternetStore\\DataAccess\\DataAccess.csproj",
+      "projectPath": "D:\\INTITA\\InternetStore\\DataAccess\\DataAccess.csproj",
       "packagesPath": "C:\\Users\\Max\\.nuget\\packages\\",
-      "outputPath": "E:\\INTITA\\InternetStore\\DataAccess\\obj\\",
+      "outputPath": "D:\\INTITA\\InternetStore\\DataAccess\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\",
@@ -13500,8 +13500,8 @@
       "frameworks": {
         "netcoreapp2.0": {
           "projectReferences": {
-            "E:\\INTITA\\InternetStore\\Domain.Models\\Domain.Models.csproj": {
-              "projectPath": "E:\\INTITA\\InternetStore\\Domain.Models\\Domain.Models.csproj"
+            "D:\\INTITA\\InternetStore\\Domain.Models\\Domain.Models.csproj": {
+              "projectPath": "D:\\INTITA\\InternetStore\\Domain.Models\\Domain.Models.csproj"
             }
           }
         }

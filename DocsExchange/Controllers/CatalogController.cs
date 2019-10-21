@@ -4,6 +4,8 @@ using System.Diagnostics;
 using System.Linq;
 using AutoMapper;
 using BusinessLogic.Interfaces;
+using DataAccess;
+using DataAccess.Context;
 using Domain.Models;
 using Microsoft.AspNetCore.Mvc;
 using WebStore.Models;
@@ -16,22 +18,36 @@ namespace WebStore.Controllers
     {
         private readonly IProductBusinessLogic _productBusinessLogic;
         private readonly IProductImagesBusinessLogic _productImagesBusinessLogic;
-        
+        private readonly WebStoreDbContext _context;
         private readonly IMapper _mapper;
 
         public CatalogController(IProductBusinessLogic productBusinessLogic, 
                                 IProductImagesBusinessLogic productImagesBusinessLogic,
-                                IMapper mapper)
+                                IMapper mapper, WebStoreDbContext context)
         {
             _mapper = mapper;
+            _context = context;
             _productBusinessLogic = productBusinessLogic;
             _productImagesBusinessLogic = productImagesBusinessLogic;
         }
         // GET
         public IActionResult Index()
         {
-            try { 
-                    ViewBag.Data = _productBusinessLogic.GetAll().Select(_mapper.Map<ProductView>);
+            var _colorRep = new ProductColorRepository(_context);
+            var _metalRep = new ProductMetalRepository(_context);
+            var _typeRep = new ProductTypeRepository(_context);
+            var _statusRep = new ProductStatusRepository(_context);
+            var _statusAvRep = new ProductAvStatusRepository(_context);
+            var _genderRep = new GenderRepository(_context);
+
+            try {
+                    ViewBag.Data = _productBusinessLogic.GetAllActive().Select(_mapper.Map<ProductView>);
+                    ViewBag.Colors = _colorRep.GetAllAvailable();
+                    ViewBag.Metals = _metalRep.GetAllAvailable();
+                    ViewBag.Genders = _genderRep.GetAllAvailable();
+                    ViewBag.Types = _typeRep.GetAllAvailable();
+                    ViewBag.Statuses = _statusRep.GetAllAvailable();
+                    ViewBag.StatusesAv = _statusAvRep.GetAllAvailable();
                 return View();
                 }
             catch
@@ -45,7 +61,7 @@ namespace WebStore.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Filter(FilterProducts filtersEvents)
+        public ActionResult Filter(ProductsFilters filtersEvents)
         {
             var prodFilter = filtersEvents.Name;
             var products = _productBusinessLogic
@@ -71,6 +87,37 @@ namespace WebStore.Controllers
             if (dep != null && dep.Name.Contains(prodFilter))
                 return true;
             return false;
+        }
+        [HttpGet]
+        [ValidateAntiForgeryToken]
+        public ActionResult GetFilters(ProductsFilters filtersEvents)
+        {
+            var _colorRep = new ProductColorRepository(_context);
+            var _metalRep = new ProductMetalRepository(_context);
+            var _typeRep = new ProductTypeRepository(_context);
+            var _statusRep = new ProductStatusRepository(_context);
+            var _statusAvRep = new ProductAvStatusRepository(_context);
+            var _genderRep = new GenderRepository(_context);
+            var filters = new ProductsFilters()
+            {
+                Name = "",
+                ColorList = _colorRep.GetAllAvailable(),
+                MetalList = _metalRep.GetAllAvailable(),
+                TypeList = _typeRep.GetAllAvailable(),
+                StatusList = _statusRep.GetAllAvailable(),
+                StatusAvList = _statusAvRep.GetAllAvailable(),
+                GenderList = _genderRep.GetAllAvailable()
+            };
+
+            //ViewBag.Data = _productBusinessLogic.GetAllActive().Select(_mapper.Map<ProductView>);
+            //ViewBag.Colors = _colorRep.GetAllAvailable();
+            //ViewBag.Metals = _metalRep.GetAllAvailable();
+            //ViewBag.Genders = _genderRep.GetAllAvailable();
+            //ViewBag.Types = _typeRep.GetAllAvailable();
+            //ViewBag.Statuses = _statusRep.GetAllAvailable();
+            //ViewBag.StatusesAv = _statusAvRep.GetAllAvailable();
+
+            return View(nameof(Index));
         }
     }
 }
