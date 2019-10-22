@@ -43,20 +43,25 @@ namespace WebStore.Controllers
 
             try
             {
+                var filters = new ProductsFilters()
+                {
+                    ColorList = _colorRep.GetAllAvailable(),
+                    MetalList = _metalRep.GetAllAvailable(),
+                    GenderList = _genderRep.GetAllAvailable(),
+                    TypeList = _typeRep.GetAllAvailable(),
+                    StatusList = _statusRep.GetAllAvailable(),
+                    StatusAvList = _statusAvRep.GetAllAvailable()
+                };
+
                 ViewBag.Data = _productBusinessLogic.GetAllActive().Select(_mapper.Map<ProductView>);
-                ViewBag.Colors = _colorRep.GetAllAvailable();
-                ViewBag.Metals = _metalRep.GetAllAvailable();
-                ViewBag.Genders = _genderRep.GetAllAvailable();
-                ViewBag.Types = _typeRep.GetAllAvailable();
-                ViewBag.Statuses = _statusRep.GetAllAvailable();
-                ViewBag.StatusesAv = _statusAvRep.GetAllAvailable();
+                ViewBag.Filters = filters;
+                
                 return View();
             }
-
             catch
             {
-                    return RedirectToAction("Error");
-                }
+                return RedirectToAction("Error");
+            }
         }
         public IActionResult Error()
         {
