@@ -11,122 +11,130 @@
 
 @*@section Scripts {
 
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $('#AutoCcProd').autocomplete({
+                    source: '/Search/AutocompleteSearchProduct',
+                    minLength: 3,
+                    delay: 400
+                });
+            });
+        </script>
+    }*@
+
+@section Scripts {
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-
     <script type="text/javascript">
-        $(document).ready(function () {
-            $('#AutoCcProd').autocomplete({
-                source: '/Search/AutocompleteSearchProduct',
-                minLength: 3,
-                delay: 400
+        $(document).ready(function GetFilters() {
+            $.ajax({
+                url: "@Url.Action("GetFilters","Catalog")",
+                data: {selectedValue:selectedValue},
+                dataType: "json",
+                type: "GET",
+                error: function () {
+                    alert(" An error occurred.");
+                },
+                success: function (data) {
+                    alert(data);
+                    $.each(data, function (i) {
+                        var variable = 0;
+                    });
+                }
             });
         });
     </script>
-}*@
-
-<table class="table col-lg-4 content">
-
-</table>
-
-
-<h2>Каталог товарів</h2>
-
-@using (Html.BeginForm("GetFilters", "Catalog", FormMethod.Post))
-{
-    <fieldset>
-        <form asp-action="GetFilters">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <ul>
-                @foreach (ProductColor item in Model.ColorList)
-                    {
-
-                        //<li><input type="checkbox" id="@Html.DisplayForModel(item.Id)"> @Html.DisplayForModel(item.Name)</li>
-                    }
-
-                @*@Html.CheckBoxFor(model => model.ColorList, ViewBag.ColorList as IEnumerable<SelectListItem>, new { style = "width:200px; height:35px; margin-left:700px" })*@
-            </ul>
-            <div class="form-group">
-                <button type="submit" value="Шукати" style="border: none; background-color: Transparent;"><img src="~/images/search_icon.png" title="Шукати" width="25" height="25" /></button> | <a asp-action="Index">Показати всі..</a>
-            </div>
-        </form>
-    </fieldset>
 }
-
-<p>
-    <a asp-action="Create"><img src="~/images/add.png"> Створити новий</a>
-</p>
-<table class="table col-lg-9">
+<h2>Каталог товарів</h2>
+<table class="table col-lg-8">
     <thead>
         <tr>
-            <th class="col-lg-2">Назва</th>
-            <th class="col-lg-1">Тип товару</th>
-            <th class="col-lg-1">Тип металу</th>
-            <th class="col-lg-1">Колір</th>
-            <th class="col-lg-1">Стать</th>
-            <th class="col-lg-1">Вага</th>
-            <th class="col-lg-1">Кількість</th>
-            <th class="col-lg-1">Ціна</th>
+            <th class="col-lg-1">Фльтри</th>
+            <th class="col-lg-7"></th>
         </tr>
     </thead>
     <tbody>
-        @foreach (ProductView item in ViewBag.Data)
-        {
-            <tr>
-                <td class="col-lg-2">@Html.DisplayFor(modelItem => item.Name)</td>
-                <td class="col-lg-1">@Html.DisplayFor(modelItem => item.ProductTypeName)</td>
-                <td class="col-lg-1">@Html.DisplayFor(modelItem => item.ProductMetalName)</td>
-                <td class="col-lg-1">@Html.DisplayFor(modelItem => item.ProductColorName)</td>
-                <td class="col-lg-1">@Html.DisplayFor(modelItem => item.GenderName)</td>
-                <td class="col-lg-1">@Html.DisplayFor(modelItem => item.Weight)</td>
-                <td class="col-lg-1">@Html.DisplayFor(modelItem => item.Amount)</td>
-                <td class="col-lg-1">@Html.DisplayFor(modelItem => item.Price)</td>
-            </tr>
-        }
+        <tr>
+            <td class="col-lg-1">
+                <div id="checkboxes">
+                    <label>Тип металу:</label>
+                    <ul>
+                        @foreach (ProductMetal item in ViewBag.Metals)
+                        {
+                            <li><input type="checkbox" id="@Html.DisplayFor(modelItem => item.Id)"> @Html.DisplayFor(modelItem => item.Name)</li>
+                        }
+                    </ul>
+                    <label>Колір:</label>
+                    <ul>
+                        @foreach (ProductColor item in ViewBag.Colors)
+                        {
+                            <li><input type="checkbox" id="@Html.DisplayFor(modelItem => item.Id)"> @Html.DisplayFor(modelItem => item.Name)</li>
+                        }
+                    </ul>
+                    <label>Стать:</label>
+                    <ul>
+                        @foreach (Gender item in ViewBag.Genders)
+                        {
+                            <li><input type="checkbox" id="@Html.DisplayFor(modelItem => item.Id)"> @Html.DisplayFor(modelItem => item.Name)</li>
+                        }
+                    </ul>
+                    <label>Тип виробу:</label>
+                    <ul>
+                        @foreach (ProductType item in ViewBag.Types)
+                        {
+                            <li><input type="checkbox" id="@Html.DisplayFor(modelItem => item.Id)"> @Html.DisplayFor(modelItem => item.Name)</li>
+                        }
+                    </ul>
+                    <label>Новинки:</label>
+                    <ul>
+                        @foreach (ProductStatus item in ViewBag.Statuses)
+                        {
+                            <li><input type="checkbox" id="@Html.DisplayFor(modelItem => item.Id)"> @Html.DisplayFor(modelItem => item.Name)</li>
+                        }
+                    </ul>
+                    <label>Наявніст:</label>
+                    <ul>
+                        @foreach (ProductAvailabilityStatus item in ViewBag.StatusesAv)
+                        {
+                            <li><input type="checkbox" id="@Html.DisplayFor(modelItem => item.Id)"> @Html.DisplayFor(modelItem => item.Name)</li>
+                        }
+                    </ul>
+                </div>
+            </td>
+            <td class="col-lg-7">
+                <table class="table col-lg-9">
+                    <thead>
+                        <tr>
+                            <th class="col-lg-2">Назва</th>
+                            <th class="col-lg-1">Тип товару</th>
+                            <th class="col-lg-1">Тип металу</th>
+                            <th class="col-lg-1">Колір</th>
+                            <th class="col-lg-1">Стать</th>
+                            <th class="col-lg-1">Вага</th>
+                            <th class="col-lg-1">Кількість</th>
+                            <th class="col-lg-1">Ціна</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (ProductView item in ViewBag.Data)
+                        {
+                            <tr>
+                                <td class="col-lg-2">@Html.DisplayFor(modelItem => item.Name)</td>
+                                <td class="col-lg-1">@Html.DisplayFor(modelItem => item.ProductTypeName)</td>
+                                <td class="col-lg-1">@Html.DisplayFor(modelItem => item.ProductMetalName)</td>
+                                <td class="col-lg-1">@Html.DisplayFor(modelItem => item.ProductColorName)</td>
+                                <td class="col-lg-1">@Html.DisplayFor(modelItem => item.GenderName)</td>
+                                <td class="col-lg-1">@Html.DisplayFor(modelItem => item.Weight)</td>
+                                <td class="col-lg-1">@Html.DisplayFor(modelItem => item.Amount)</td>
+                                <td class="col-lg-1">@Html.DisplayFor(modelItem => item.Price)</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </td>
+        </tr>
     </tbody>
 </table>
-@*<div id="checkboxes">
-    <label>Тип металу:</label>
-    <ul>
-        @foreach (ProductMetal item in ViewBag.Metals)
-        {
-            <li><input type="checkbox" id="@Html.DisplayFor(modelItem => item.Id)"> @Html.DisplayFor(modelItem => item.Name)</li>
-        }
-    </ul>
-    <label>Колір:</label>
-    <ul>
-        @foreach (ProductColor item in ViewBag.Colors)
-        {
-            <li><input type="checkbox" id="@Html.DisplayFor(modelItem => item.Id)"> @Html.DisplayFor(modelItem => item.Name)</li>
-        }
-    </ul>
-    <label>Стать:</label>
-    <ul>
-        @foreach (Gender item in ViewBag.Genders)
-        {
-            <li><input type="checkbox" id="@Html.DisplayFor(modelItem => item.Id)"> @Html.DisplayFor(modelItem => item.Name)</li>
-        }
-    </ul>
-    <label>Тип виробу:</label>
-    <ul>
-        @foreach (ProductType item in ViewBag.Types)
-        {
-            <li><input type="checkbox" id="@Html.DisplayFor(modelItem => item.Id)"> @Html.DisplayFor(modelItem => item.Name)</li>
-        }
-    </ul>
-    <label>Новинки:</label>
-    <ul>
-        @foreach (ProductStatus item in ViewBag.Statuses)
-        {
-            <li><input type="checkbox" id="@Html.DisplayFor(modelItem => item.Id)"> @Html.DisplayFor(modelItem => item.Name)</li>
-        }
-    </ul>
-    <label>Наявніст:</label>
-    <ul>
-        @foreach (ProductAvailabilityStatus item in ViewBag.StatusesAv)
-        {
-            <li><input type="checkbox" id="@Html.DisplayFor(modelItem => item.Id)"> @Html.DisplayFor(modelItem => item.Name)</li>
-        }
-    </ul>
-</div>*@
-

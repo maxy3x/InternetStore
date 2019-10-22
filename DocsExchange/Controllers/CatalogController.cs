@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Mvc;
 using WebStore.Models;
 using WebStore.Models.Filters;
 using WebStore.ViewModels;
+using Newtonsoft.Json;
 
 namespace WebStore.Controllers
 {
@@ -40,18 +41,20 @@ namespace WebStore.Controllers
             var _statusAvRep = new ProductAvStatusRepository(_context);
             var _genderRep = new GenderRepository(_context);
 
-            try {
-                    ViewBag.Data = _productBusinessLogic.GetAllActive().Select(_mapper.Map<ProductView>);
-                    ViewBag.Colors = _colorRep.GetAllAvailable();
-                    ViewBag.Metals = _metalRep.GetAllAvailable();
-                    ViewBag.Genders = _genderRep.GetAllAvailable();
-                    ViewBag.Types = _typeRep.GetAllAvailable();
-                    ViewBag.Statuses = _statusRep.GetAllAvailable();
-                    ViewBag.StatusesAv = _statusAvRep.GetAllAvailable();
+            try
+            {
+                ViewBag.Data = _productBusinessLogic.GetAllActive().Select(_mapper.Map<ProductView>);
+                ViewBag.Colors = _colorRep.GetAllAvailable();
+                ViewBag.Metals = _metalRep.GetAllAvailable();
+                ViewBag.Genders = _genderRep.GetAllAvailable();
+                ViewBag.Types = _typeRep.GetAllAvailable();
+                ViewBag.Statuses = _statusRep.GetAllAvailable();
+                ViewBag.StatusesAv = _statusAvRep.GetAllAvailable();
                 return View();
-                }
+            }
+
             catch
-                {
+            {
                     return RedirectToAction("Error");
                 }
         }
@@ -90,7 +93,7 @@ namespace WebStore.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult GetFilters(ProductsFilters filtersEvents)
+        public ActionResult GetFilters(ProductsFilters filtersItems)
         {
             var _colorRep = new ProductColorRepository(_context);
             var _metalRep = new ProductMetalRepository(_context);
@@ -98,26 +101,20 @@ namespace WebStore.Controllers
             var _statusRep = new ProductStatusRepository(_context);
             var _statusAvRep = new ProductAvStatusRepository(_context);
             var _genderRep = new GenderRepository(_context);
+
             var filters = new ProductsFilters()
             {
-                Name = "",
                 ColorList = _colorRep.GetAllAvailable(),
                 MetalList = _metalRep.GetAllAvailable(),
+                GenderList = _genderRep.GetAllAvailable(),
                 TypeList = _typeRep.GetAllAvailable(),
                 StatusList = _statusRep.GetAllAvailable(),
-                StatusAvList = _statusAvRep.GetAllAvailable(),
-                GenderList = _genderRep.GetAllAvailable()
+                StatusAvList = _statusAvRep.GetAllAvailable()
             };
 
-            //ViewBag.Data = _productBusinessLogic.GetAllActive().Select(_mapper.Map<ProductView>);
-            //ViewBag.Colors = _colorRep.GetAllAvailable();
-            //ViewBag.Metals = _metalRep.GetAllAvailable();
-            //ViewBag.Genders = _genderRep.GetAllAvailable();
-            //ViewBag.Types = _typeRep.GetAllAvailable();
-            //ViewBag.Statuses = _statusRep.GetAllAvailable();
-            //ViewBag.StatusesAv = _statusAvRep.GetAllAvailable();
+            //string productFilters = JsonConvert.SerializeObject(filters);
 
-            return View(nameof(Index));
+            return PartialView(filters);
         }
     }
 }
