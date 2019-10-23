@@ -10,6 +10,7 @@ using DataAccess;
 using WebStore.ViewModels;
 using Domain.Models;
 using AutoMapper;
+using Newtonsoft.Json;
 
 namespace WebStore.Controllers
 {
@@ -24,12 +25,14 @@ namespace WebStore.Controllers
             _productBusinessLogic = productBusinessLogic;
             _mapper = mapper;
         }
-        //[HttpPost]
+        [HttpPost]
         //[ValidateAntiForgeryToken]
-        public ActionResult Filter(string filters)
+        public ActionResult Filter([FromBody] string filters)
         {
+            List<FiltersView> filtersView = JsonConvert.DeserializeObject<List<FiltersView>>(filters);
             Console.WriteLine("");
-            return RedirectToAction("Index", "Catalog");
+            //return RedirectToAction("Index", "Catalog");
+            return PartialView("Index");
         }
         private bool FilterByProductName(Product @item, string prodFilter)
         {

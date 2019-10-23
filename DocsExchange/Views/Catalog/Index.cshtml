@@ -16,16 +16,14 @@
         
     <script type="text/javascript">
         $(".filter").change(function setStatus() {
-            var filters = [];
+            var filtersArr = [];
             var elements = document.getElementsByClassName('filter');
-            var i = 0;
             for (let item of elements) {
-                filters[i] = { Id: item.id, Checked: item.checked };
-                i++;
+                filtersArr.push({ Id: item.id, Checked: item.checked });
             }
-            var myJSON = JSON.stringify(filters);
+            var filters = JSON.stringify(filtersArr);
 
-            console.log(myJSON);
+            //console.log(filters);
                         
             //$.ajax({
             //    url: "/Filter/Filter",
@@ -36,34 +34,55 @@
             //    contentType: "application/json; charset=utf-8",
             //    success: function (data) {
             //        if (data.status == "Success") {
-            //            alert("Done");
             //        } else {
-            //            alert("Error occurs on the Database level!");
             //        }
             //    },
             //    error: function () {
-            //        alert("An error has occured!!!");
             //    }
             //});
+
             $.ajax({
-                url: "/Filter/Filter",
+                url: '/Filter/Filter',
                 type: "POST",
-                data: "1",
-                contents: filters,
-                dataType: "text",
-                traditional: true,
-                contentType: "text/plain",
-                success: function (data) {
-                    if (data.status == "Success") {
-                        alert("Done");
-                    } else {
-                        alert("Error occurs on the Database level!");
-                    }
+                data: JSON.stringify(filters),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (response) {
+                    alert(response.responseText);
                 },
-                error: function () {
-                    alert("An error has occured!!!");
+                error: function (response) {
+                    alert(response.responseText);
+                },
+                failure: function (response) {
+                    alert(response.responseText);
                 }
-            }); 
+            })
+
+            //$.ajax({
+            //    url: "/Filter/Filter",
+            //    type: "POST",
+            //    data: "1",
+            //    contents: filters,
+            //    dataType: "text",
+            //    traditional: true,
+            //    contentType: "text/plain",
+            //    success: function (data) {
+            //        if (data.status == "Success") {
+            //        } else {
+            //        }
+            //    },
+            //    error: function () {
+            //    }
+            //}); 
+            //$.ajax({
+            //    url: "/Filter/Filter/1",
+            //    type: "POST",
+            //    data: "1",
+            //    contents: filters,
+            //    dataType: "text",
+            //    traditional: true,
+            //    contentType: "text/plain",
+            //}); 
         });
     </script>
 }
