@@ -23,8 +23,9 @@
                 filters[i] = { Id: item.id, Checked: item.checked };
                 i++;
             }
-            
-            console.log(filters);
+            var myJSON = JSON.stringify(filters);
+
+            console.log(myJSON);
                         
             //$.ajax({
             //    url: "/Filter/Filter",
@@ -47,7 +48,8 @@
             $.ajax({
                 url: "/Filter/Filter",
                 type: "POST",
-                data: filters,
+                data: "1",
+                contents: filters,
                 dataType: "text",
                 traditional: true,
                 contentType: "text/plain",
@@ -61,7 +63,7 @@
                 error: function () {
                     alert("An error has occured!!!");
                 }
-            });
+            }); 
         });
     </script>
 }
