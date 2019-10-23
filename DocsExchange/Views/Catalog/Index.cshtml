@@ -20,18 +20,38 @@
             var elements = document.getElementsByClassName('filter');
             var i = 0;
             for (let item of elements) {
-                filters[i] = { item: item.id, checked: item.checked };i++;
+                filters[i] = { Id: item.id, Checked: item.checked };
+                i++;
             }
+            
             //console.log(filters);
+            
+            //$.ajax({
+            //    type: "POST",
+            //    contentType: "application/json; charset=utf-8",
+            //    url: "/Filter/CatalogFilter",
+            //    data: JSON.stringify(filters),
+            //    dataType: "json",
+            //    success: function (result) { },
+            //    error: function (result) { }
+            //});
             $.ajax({
+                url: "/Filter/Filter",
                 type: "POST",
-                contentType: "application/json; charset=utf-8",
-                url: "/Filter/CatalogFilter",
                 data: JSON.stringify(filters),
-                //data: form.serialize(filters),
                 dataType: "json",
-                success: function (result) { },
-                error: function (result) { }
+                traditional: true,
+                contentType: "application/json; charset=utf-8",
+                success: function (data) {
+                    if (data.status == "Success") {
+                        alert("Done");
+                    } else {
+                        alert("Error occurs on the Database level!");
+                    }
+                },
+                error: function () {
+                    alert("An error has occured!!!");
+                }
             });
         });
     </script>

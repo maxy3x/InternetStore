@@ -25,8 +25,8 @@ namespace WebStore.Controllers
             _mapper = mapper;
         }
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult CatalogFilter(string filtersItems)
+        //[ValidateAntiForgeryToken]
+        public ActionResult Filter([FromBody] string filters)
         {
             Console.WriteLine("");
             return RedirectToAction("Index", "Catalog");
