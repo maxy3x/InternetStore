@@ -24,24 +24,33 @@
                 i++;
             }
             
-            //console.log(filters);
-            
+            console.log(filters);
+                        
             //$.ajax({
+            //    url: "/Filter/Filter",
             //    type: "POST",
-            //    contentType: "application/json; charset=utf-8",
-            //    url: "/Filter/CatalogFilter",
             //    data: JSON.stringify(filters),
             //    dataType: "json",
-            //    success: function (result) { },
-            //    error: function (result) { }
+            //    traditional: true,
+            //    contentType: "application/json; charset=utf-8",
+            //    success: function (data) {
+            //        if (data.status == "Success") {
+            //            alert("Done");
+            //        } else {
+            //            alert("Error occurs on the Database level!");
+            //        }
+            //    },
+            //    error: function () {
+            //        alert("An error has occured!!!");
+            //    }
             //});
             $.ajax({
                 url: "/Filter/Filter",
                 type: "POST",
-                data: JSON.stringify(filters),
-                dataType: "json",
+                data: filters,
+                dataType: "text",
                 traditional: true,
-                contentType: "application/json; charset=utf-8",
+                contentType: "text/plain",
                 success: function (data) {
                     if (data.status == "Success") {
                         alert("Done");

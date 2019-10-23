@@ -24,9 +24,9 @@ namespace WebStore.Controllers
             _productBusinessLogic = productBusinessLogic;
             _mapper = mapper;
         }
-        [HttpPost]
+        //[HttpPost]
         //[ValidateAntiForgeryToken]
-        public ActionResult Filter([FromBody] string filters)
+        public ActionResult Filter(string filters)
         {
             Console.WriteLine("");
             return RedirectToAction("Index", "Catalog");
