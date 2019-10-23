@@ -26,27 +26,9 @@ namespace WebStore.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult CatalogFilter(ProductsFilters filtersItems)
+        public ActionResult CatalogFilter(string filtersItems)
         {
-
-            var colorFilter = filtersItems.ColorList;
-            var metalFilter = filtersItems.MetalList;
-            var typeFilter = filtersItems.TypeList;
-            var statusFilter = filtersItems.StatusList;
-            var statusAvFilter = filtersItems.StatusAvList;
-            var genderFilter = filtersItems.GenderList;
-
-            var products = _productBusinessLogic
-                .GetAll()
-                .Where(@prod =>
-                    FilterByColorName(@prod, colorFilter)
-                    ).ToList();
-            List<ProductView> models = new List<ProductView>();
-            foreach (var item in products)
-            {
-                models.Add(_mapper.Map<ProductView>(item));
-            }
-            ViewBag.Data = models.OrderBy(x => x.Name).ToList();
+            Console.WriteLine("");
             return RedirectToAction("Index", "Catalog");
         }
         private bool FilterByProductName(Product @item, string prodFilter)
@@ -55,12 +37,12 @@ namespace WebStore.Controllers
                 return true;
             if (@item.Name == null)
                 return false;
-            var dep = _productBusinessLogic.GetByStr(@item.Name).FirstOrDefault();
-            if (dep != null && dep.Name.Contains(prodFilter))
+            var prod = _productBusinessLogic.GetByStr(@item.Name).FirstOrDefault();
+            if (prod != null && prod.Name.Contains(prodFilter))
                 return true;
             return false;
         }
-        private bool FilterByColorName(Product @item, IEnumerable<ProductColor> filter)
+        private bool FilterByColorName(Product @item, IEnumerable<ProductColorView> filter)
         {
             throw new System.NotImplementedException();
         }
@@ -84,6 +66,23 @@ namespace WebStore.Controllers
         {
             throw new System.NotImplementedException();
         }
-        
+        //var colorFilter = filtersItems.ColorList;
+        //var metalFilter = filtersItems.MetalList;
+        //var typeFilter = filtersItems.TypeList;
+        //var statusFilter = filtersItems.StatusList;
+        //var statusAvFilter = filtersItems.StatusAvList;
+        //var genderFilter = filtersItems.GenderList;
+
+        //var products = _productBusinessLogic
+        //    .GetAll()
+        //    .Where(@prod =>
+        //        FilterByColorName(@prod, colorFilter)
+        //        ).ToList();
+        //List<ProductView> models = new List<ProductView>();
+        //foreach (var item in products)
+        //{
+        //    models.Add(_mapper.Map<ProductView>(item));
+        //}
+        //ViewBag.Data = models.OrderBy(x => x.Name).ToList();
     }
 }

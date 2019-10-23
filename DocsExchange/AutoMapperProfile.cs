@@ -39,11 +39,21 @@ namespace WebStore
                 .ForMember(x => x.Gender, c => c.ResolveUsing<GenderResolverReverse>());
 
             CreateMap<ProductImage, ProductImageView>()
-              .ForMember(x => x.Message, c => c.ResolveUsing<MessageResolver>());
+                .ForMember(x => x.Message, c => c.ResolveUsing<MessageResolver>());
             CreateMap<ProductImageView, ProductImage>();
+
+            CreateMap<ProductColor, ProductColorView>()
+                .ForMember(x => x.flag, c => c.ResolveUsing<FlagResolver>());
+            CreateMap<ProductColorView, ProductColor>();
         }
     }
-    
+    public class FlagResolver : IValueResolver<Object, Object, bool>
+    {
+        public bool Resolve(Object source, Object destination, bool flag, ResolutionContext context)
+        {
+            return false;
+        }
+    }
     public class MessageResolver : IValueResolver<Object, Object, String>
     {
         public string Resolve(Object source, Object destination, string message, ResolutionContext context)

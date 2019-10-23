@@ -45,7 +45,7 @@ namespace WebStore.Controllers
             {
                 var filters = new ProductsFilters()
                 {
-                    ColorList = _colorRep.GetAllAvailable(),
+                    ColorList = _colorRep.GetAllAvailable().Select(_mapper.Map<ProductColorView>),
                     MetalList = _metalRep.GetAllAvailable(),
                     GenderList = _genderRep.GetAllAvailable(),
                     TypeList = _typeRep.GetAllAvailable(),
@@ -63,6 +63,7 @@ namespace WebStore.Controllers
                 return RedirectToAction("Error");
             }
         }
+
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
@@ -95,31 +96,6 @@ namespace WebStore.Controllers
             if (dep != null && dep.Name.Contains(prodFilter))
                 return true;
             return false;
-        }
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult GetFilters(ProductsFilters filtersItems)
-        {
-            var _colorRep = new ProductColorRepository(_context);
-            var _metalRep = new ProductMetalRepository(_context);
-            var _typeRep = new ProductTypeRepository(_context);
-            var _statusRep = new ProductStatusRepository(_context);
-            var _statusAvRep = new ProductAvStatusRepository(_context);
-            var _genderRep = new GenderRepository(_context);
-
-            var filters = new ProductsFilters()
-            {
-                ColorList = _colorRep.GetAllAvailable(),
-                MetalList = _metalRep.GetAllAvailable(),
-                GenderList = _genderRep.GetAllAvailable(),
-                TypeList = _typeRep.GetAllAvailable(),
-                StatusList = _statusRep.GetAllAvailable(),
-                StatusAvList = _statusAvRep.GetAllAvailable()
-            };
-
-            //string productFilters = JsonConvert.SerializeObject(filters);
-
-            return PartialView(filters);
         }
     }
 }

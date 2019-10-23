@@ -16,7 +16,23 @@
         
     <script type="text/javascript">
         $(".filter").change(function setStatus() {
-            console.log(this.checked +" "+ this.id);
+            var filters = [];
+            var elements = document.getElementsByClassName('filter');
+            var i = 0;
+            for (let item of elements) {
+                filters[i] = { item: item.id, checked: item.checked };i++;
+            }
+            //console.log(filters);
+            $.ajax({
+                type: "POST",
+                contentType: "application/json; charset=utf-8",
+                url: "/Filter/CatalogFilter",
+                data: JSON.stringify(filters),
+                //data: form.serialize(filters),
+                dataType: "json",
+                success: function (result) { },
+                error: function (result) { }
+            });
         });
     </script>
 }
@@ -47,7 +63,7 @@
                                 </ul>
                                 <label>Колір:</label>
                                 <ul>
-                                    @foreach (ProductColor item in ViewBag.Filters.ColorList)
+                                    @foreach (ProductColorView item in ViewBag.Filters.ColorList)
                                     {
                                         <li><input type="checkbox" class="filter" id="color_@Html.DisplayFor(modelItem => item.Id)"> @Html.DisplayFor(modelItem => item.Name)</li>
                                     }
