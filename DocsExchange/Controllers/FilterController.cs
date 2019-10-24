@@ -30,7 +30,7 @@ namespace WebStore.Controllers
         public ActionResult Filter([FromBody] string filters)
         {
             List<FiltersView> filtersView = JsonConvert.DeserializeObject<List<FiltersView>>(filters);
-            Console.WriteLine("");
+            List<ProductColor> colorFilter = GetColorFilters(filtersView);
             //return RedirectToAction("Index", "Catalog");
             return PartialView("Index");
         }
@@ -44,6 +44,21 @@ namespace WebStore.Controllers
             if (prod != null && prod.Name.Contains(prodFilter))
                 return true;
             return false;
+        }
+        public List<ProductColor> GetColorFilters(List<FiltersView> filtersView) {
+            var _colorRep = new ProductColorRepository(_context);
+            List<ProductColor> colorFilter = new List<ProductColor> { };
+            foreach (FiltersView item in filtersView)
+            {
+                if (item.Checked) { 
+                    string[] result = item.Id.Split(new char[] { '_' }, StringSplitOptions.None);
+                    if(item.Id.Split(new char[] { '_' }, StringSplitOptions.None) != null) { 
+                    
+                        colorFilter.Add(_colorRep.GetById(Int32.Parse(result[1])));
+                    }
+                }
+            }
+            return colorFilter;
         }
         private bool FilterByColorName(Product @item, IEnumerable<ProductColorView> filter)
         {
