@@ -27,12 +27,25 @@ namespace WebStore.Controllers
         }
         [HttpPost]
         //[ValidateAntiForgeryToken]
-        public ActionResult Filter([FromBody] string filters)
+        public string Filter([FromBody] string filters)
         {
             List<FiltersView> filtersView = JsonConvert.DeserializeObject<List<FiltersView>>(filters);
-            List<ProductColor> colorFilter = GetColorFilters(filtersView);
+            IEnumerable<ProductColorView> colorFilter = GetColorFilters(filtersView).Select(_mapper.Map<ProductColorView>);
+
+            var products = _productBusinessLogic
+                .GetAll()
+                .Where(@prod =>
+                    FilterByColor(@prod, colorFilter))
+                .ToList();
+            List<ProductView> models = new List<ProductView>();
+            foreach (var item in products)
+            {
+                models.Add(_mapper.Map<ProductView>(item));
+            }
+            ViewBag.Data = models.OrderBy(x => x.Name).ToList();
+
             //return RedirectToAction("Index", "Catalog");
-            return PartialView("Index");
+            return "MyText";
         }
         private bool FilterByProductName(Product @item, string prodFilter)
         {
@@ -45,24 +58,29 @@ namespace WebStore.Controllers
                 return true;
             return false;
         }
-        public List<ProductColor> GetColorFilters(List<FiltersView> filtersView) {
+        public IEnumerable<ProductColor> GetColorFilters(List<FiltersView> filtersView) {
             var _colorRep = new ProductColorRepository(_context);
             List<ProductColor> colorFilter = new List<ProductColor> { };
             foreach (FiltersView item in filtersView)
             {
                 if (item.Checked) { 
                     string[] result = item.Id.Split(new char[] { '_' }, StringSplitOptions.None);
-                    if(item.Id.Split(new char[] { '_' }, StringSplitOptions.None) != null) { 
                     
+                    if((result[1] != null) && (result[0] == "color")) { 
                         colorFilter.Add(_colorRep.GetById(Int32.Parse(result[1])));
                     }
                 }
             }
-            return colorFilter;
+            return colorFilter.ToList();
         }
-        private bool FilterByColorName(Product @item, IEnumerable<ProductColorView> filter)
+        private bool FilterByColor(Product @item, IEnumerable<ProductColorView> filter)
         {
-            throw new System.NotImplementedException();
+            if (!filter.Any()){return true;}
+            foreach (ProductColorView color in filter) { 
+            if (@item != null && item.ProductColor == color.Id)
+                return true;
+            }
+            return false;
         }
         private bool FilterByMetalName(Product @event, IEnumerable<int> filter)
         {

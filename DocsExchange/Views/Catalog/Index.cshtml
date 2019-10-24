@@ -22,25 +22,7 @@
                 filtersArr.push({ Id: item.id, Checked: item.checked });
             }
             var filters = JSON.stringify(filtersArr);
-
-            //console.log(filters);
-                        
-            //$.ajax({
-            //    url: "/Filter/Filter",
-            //    type: "POST",
-            //    data: JSON.stringify(filters),
-            //    dataType: "json",
-            //    traditional: true,
-            //    contentType: "application/json; charset=utf-8",
-            //    success: function (data) {
-            //        if (data.status == "Success") {
-            //        } else {
-            //        }
-            //    },
-            //    error: function () {
-            //    }
-            //});
-
+        
             $.ajax({
                 url: '/Filter/Filter',
                 type: "POST",
@@ -48,41 +30,16 @@
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: function (response) {
-                    alert(response.responseText);
+                    console.log(response.responseText);
                 },
                 error: function (response) {
-                    alert(response.responseText);
+                    console.log(response.responseText);
                 },
                 failure: function (response) {
-                    alert(response.responseText);
+                    console.log(response.responseText);
                 }
             })
 
-            //$.ajax({
-            //    url: "/Filter/Filter",
-            //    type: "POST",
-            //    data: "1",
-            //    contents: filters,
-            //    dataType: "text",
-            //    traditional: true,
-            //    contentType: "text/plain",
-            //    success: function (data) {
-            //        if (data.status == "Success") {
-            //        } else {
-            //        }
-            //    },
-            //    error: function () {
-            //    }
-            //}); 
-            //$.ajax({
-            //    url: "/Filter/Filter/1",
-            //    type: "POST",
-            //    data: "1",
-            //    contents: filters,
-            //    dataType: "text",
-            //    traditional: true,
-            //    contentType: "text/plain",
-            //}); 
         });
     </script>
 }

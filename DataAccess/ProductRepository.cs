@@ -76,7 +76,7 @@ namespace DataAccess
 
         public IEnumerable<Product> GetByProductColor(ProductColor productColor)
         {
-            throw new System.NotImplementedException();
+            return _context.Product.Where(x => x.IsDeleted == false && x.ProductColor == productColor.Id).ToList();
         }
 
         public IEnumerable<Product> GetByProductMetal(ProductMetal productMetal)
