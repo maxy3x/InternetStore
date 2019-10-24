@@ -27,7 +27,7 @@ namespace WebStore.Controllers
         }
         [HttpPost]
         //[ValidateAntiForgeryToken]
-        public string Filter([FromBody] string filters)
+        public List<ProductView> Filter([FromBody] string filters)
         {
             List<FiltersView> filtersView = JsonConvert.DeserializeObject<List<FiltersView>>(filters);
             IEnumerable<ProductColorView> colorFilter = GetColorFilters(filtersView).Select(_mapper.Map<ProductColorView>);
@@ -45,7 +45,7 @@ namespace WebStore.Controllers
             ViewBag.Data = models.OrderBy(x => x.Name).ToList();
 
             //return RedirectToAction("Index", "Catalog");
-            return "MyText";
+            return ViewBag.Data;
         }
         private bool FilterByProductName(Product @item, string prodFilter)
         {
