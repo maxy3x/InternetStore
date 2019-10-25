@@ -15,6 +15,13 @@
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
     <script type="text/javascript">
+        $(document).ready(function SomeFunction() {
+                //var jsonData = JSON.parse('@Html.Raw("ddd")');
+            console.log("ddd");
+            }
+        );
+
+
         $(".filter").change(function setStatus() {
             var filtersArr = [];
             var elements = document.getElementsByClassName('filter');
@@ -22,7 +29,6 @@
                 filtersArr.push({ Id: item.id, Checked: item.checked });
             }
             var filters = JSON.stringify(filtersArr);
-
             $.ajax({
                 url: '/Filter/Filter',
                 type: "POST",
