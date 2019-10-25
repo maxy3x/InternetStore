@@ -42,8 +42,9 @@ namespace WebStore.Controllers
             {
                 models.Add(_mapper.Map<ProductView>(item));
             }
-            ViewBag.Data = models.OrderBy(x => x.Name).ToList();
 
+            ViewBag.Data = models.OrderBy(x => x.Name).ToList();
+            //ViewBag.Filters = new ProductsFilters() { };
             //return RedirectToAction("Index", "Catalog");
             return ViewBag.Data;
         }

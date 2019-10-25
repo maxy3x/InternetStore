@@ -13,7 +13,7 @@
 
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-        
+
     <script type="text/javascript">
         $(".filter").change(function setStatus() {
             var filtersArr = [];
@@ -22,7 +22,7 @@
                 filtersArr.push({ Id: item.id, Checked: item.checked });
             }
             var filters = JSON.stringify(filtersArr);
-        
+
             $.ajax({
                 url: '/Filter/Filter',
                 type: "POST",
@@ -41,12 +41,14 @@
                     console.log(response.responseText);
                 }
             })
-
         });
     </script>
 }
 
 <h2>Каталог товарів</h2>
+
+var
+
 <table class="table col-lg-8">
     <thead>
         <tr>
@@ -110,6 +112,7 @@
                     </fieldset>
                 }
             </td>
+
             <td class="col-lg-7">
                 <table class="table col-lg-9">
                     <thead>
@@ -125,6 +128,7 @@
                         </tr>
                     </thead>
                     <tbody id="productTable">
+
                         @foreach (ProductView item in ViewBag.Data)
                         {
                             <tr>

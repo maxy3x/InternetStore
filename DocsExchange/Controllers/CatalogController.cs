@@ -11,7 +11,6 @@ using Microsoft.AspNetCore.Mvc;
 using WebStore.Models;
 using WebStore.Models.Filters;
 using WebStore.ViewModels;
-using Newtonsoft.Json;
 
 namespace WebStore.Controllers
 {

@@ -674,11 +674,11 @@
       "hideWarningsAndErrors": true
     },
     "restore": {
-      "projectUniqueName": "E:\\INTITA\\InternetStore\\Domain.Models\\Domain.Models.csproj",
+      "projectUniqueName": "D:\\INTITA\\InternetStore\\Domain.Models\\Domain.Models.csproj",
       "projectName": "Domain.Models",
-      "projectPath": "E:\\INTITA\\InternetStore\\Domain.Models\\Domain.Models.csproj",
+      "projectPath": "D:\\INTITA\\InternetStore\\Domain.Models\\Domain.Models.csproj",
       "packagesPath": "C:\\Users\\Max\\.nuget\\packages\\",
-      "outputPath": "E:\\INTITA\\InternetStore\\Domain.Models\\obj\\",
+      "outputPath": "D:\\INTITA\\InternetStore\\Domain.Models\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\",
