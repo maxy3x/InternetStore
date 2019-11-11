@@ -2,9 +2,15 @@
 @using WebStore.ViewModels
 @using Domain.Models
 @model WebStore.Models.Filters.ProductsFilters
+@using Newtonsoft.Json;
 
 @{
     ViewData["Title"] = "Каталог товарів";
+}
+
+@{
+    IEnumerable<ProductView> prodList = ViewBag.Data;
+    ProductsFilters filters = ViewBag.Filters;
 }
 
 <link href="~/css/catalog.css" rel="stylesheet">
@@ -15,13 +21,7 @@
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
     <script type="text/javascript">
-        $(document).ready(function SomeFunction() {
-                //var jsonData = JSON.parse('@Html.Raw("ddd")');
-            console.log("ddd");
-            }
-        );
-
-
+       
         $(".filter").change(function setStatus() {
             var filtersArr = [];
             var elements = document.getElementsByClassName('filter');
@@ -37,8 +37,7 @@
                 dataType: "json",
                 success: function (data) {
                     console.log(data);
-                    //console.log(response.responseText);
-                    $('#productTable').html(data);
+                    @prodList = data;
                 },
                 error: function (response) {
                     console.log(response.responseText);
@@ -53,7 +52,6 @@
 
 <h2>Каталог товарів</h2>
 
-var
 
 <table class="table col-lg-8">
     <thead>
@@ -73,42 +71,42 @@ var
                             <div id="checkboxes">
                                 <label>Тип металу:</label>
                                 <ul>
-                                    @foreach (ProductMetal item in ViewBag.Filters.MetalList)
+                                    @foreach (ProductMetal item in filters.MetalList)
                                     {
                                         <li><input type="checkbox" class="filter" id="metal_@Html.DisplayFor(modelItem => item.Id)"> @Html.DisplayFor(modelItem => item.Name)</li>
                                     }
                                 </ul>
                                 <label>Колір:</label>
                                 <ul>
-                                    @foreach (ProductColorView item in ViewBag.Filters.ColorList)
+                                    @foreach (ProductColorView item in filters.ColorList)
                                     {
                                         <li><input type="checkbox" class="filter" id="color_@Html.DisplayFor(modelItem => item.Id)"> @Html.DisplayFor(modelItem => item.Name)</li>
                                     }
                                 </ul>
                                 <label>Стать:</label>
                                 <ul>
-                                    @foreach (Gender item in ViewBag.Filters.GenderList)
+                                    @foreach (Gender item in filters.GenderList)
                                     {
                                         <li><input type="checkbox" class="filter" id="gender_@Html.DisplayFor(modelItem => item.Id)"> @Html.DisplayFor(modelItem => item.Name)</li>
                                     }
                                 </ul>
                                 <label>Тип виробу:</label>
                                 <ul>
-                                    @foreach (ProductType item in ViewBag.Filters.TypeList)
+                                    @foreach (ProductType item in filters.TypeList)
                                     {
                                         <li><input type="checkbox" class="filter" id="type_@Html.DisplayFor(modelItem => item.Id)"> @Html.DisplayFor(modelItem => item.Name)</li>
                                     }
                                 </ul>
                                 <label>Новинки:</label>
                                 <ul>
-                                    @foreach (ProductStatus item in ViewBag.Filters.StatusList)
+                                    @foreach (ProductStatus item in filters.StatusList)
                                     {
                                         <li><input type="checkbox" class="filter" id="status_@Html.DisplayFor(modelItem => item.Id)"> @Html.DisplayFor(modelItem => item.Name)</li>
                                     }
                                 </ul>
                                 <label>Наявніст:</label>
                                 <ul>
-                                    @foreach (ProductAvailabilityStatus item in ViewBag.Filters.StatusAvList)
+                                    @foreach (ProductAvailabilityStatus item in filters.StatusAvList)
                                     {
                                         <li><input type="checkbox" class="filter" id="statusav_@Html.DisplayFor(modelItem => item.Id)"> @Html.DisplayFor(modelItem => item.Name)</li>
                                     }
@@ -135,7 +133,7 @@ var
                     </thead>
                     <tbody id="productTable">
 
-                        @foreach (ProductView item in ViewBag.Data)
+                        @foreach (ProductView item in prodList)
                         {
                             <tr>
                                 <td class="col-lg-2">@Html.DisplayFor(modelItem => item.Name)</td>
