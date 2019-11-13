@@ -9,7 +9,8 @@
 }
 
 @{
-    IEnumerable<ProductView> prodList = ViewBag.Data;
+    //    List<ProductView> prodList = ViewBag.Data;
+    string prodList = JsonConvert.SerializeObject(ViewBag.Data);
     ProductsFilters filters = ViewBag.Filters;
 }
 
@@ -37,8 +38,9 @@
                 dataType: "json",
                 success: function (data) {
                     console.log(data);
-
-
+                    
+                    var jstring = '@prodList';
+                    console.log(jstring);
                 },
                 error: function (response) {
                     console.log(response.responseText);
@@ -140,7 +142,7 @@
                 </tr>
             </thead>
             <tbody id="productTable">
-                @foreach (ProductView item in prodList)
+                @*@foreach (ProductView item in prodList)
                 {
                     <tr>
                         <td class="col-lg-2">@Html.DisplayFor(modelItem => item.Name)</td>
@@ -152,7 +154,7 @@
                         <td class="col-lg-1">@Html.DisplayFor(modelItem => item.Amount)</td>
                         <td class="col-lg-1">@Html.DisplayFor(modelItem => item.Price)</td>
                     </tr>
-                }
+                }*@
             </tbody>
         </table>
                 <table class="table col-lg-9" id="prodTable">

@@ -52,7 +52,7 @@ namespace WebStore.Controllers
                     StatusAvList = _statusAvRep.GetAllAvailable()
                 };
 
-                ViewBag.Data = _productBusinessLogic.GetAllActive().Select(_mapper.Map<ProductView>);
+                ViewBag.Data = _productBusinessLogic.GetAllActive().Select(_mapper.Map<ProductView>).ToList();
                 ViewBag.Filters = filters;
                 
                 return View();

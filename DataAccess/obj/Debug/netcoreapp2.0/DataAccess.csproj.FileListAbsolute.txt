@@ -37,8 +37,6 @@ D:\INTITA\GitHub\DocsExchange\DataAccess\obj\Debug\netcoreapp2.0\DataAccess.Asse
 D:\INTITA\GitHub\DocsExchange\DataAccess\obj\Debug\netcoreapp2.0\DataAccess.AssemblyInfo.cs
 D:\INTITA\GitHub\DocsExchange\DataAccess\obj\Debug\netcoreapp2.0\DataAccess.dll
 D:\INTITA\GitHub\DocsExchange\DataAccess\obj\Debug\netcoreapp2.0\DataAccess.pdb
-d:\INTITA\InternetStore\DataAccess\obj\Debug\netcoreapp2.0\DataAccess.csprojResolveAssemblyReference.cache
-d:\INTITA\InternetStore\DataAccess\obj\Debug\netcoreapp2.0\DataAccess.csproj.CoreCompileInputs.cache
 d:\INTITA\InternetStore\DataAccess\obj\Debug\netcoreapp2.0\DataAccess.AssemblyInfoInputs.cache
 d:\INTITA\InternetStore\DataAccess\obj\Debug\netcoreapp2.0\DataAccess.AssemblyInfo.cs
 d:\INTITA\InternetStore\DataAccess\obj\Debug\netcoreapp2.0\DataAccess.dll
@@ -63,3 +61,5 @@ E:\INTITA\InternetStore\DataAccess\obj\Debug\netcoreapp2.0\DataAccess.AssemblyIn
 E:\INTITA\InternetStore\DataAccess\obj\Debug\netcoreapp2.0\DataAccess.AssemblyInfo.cs
 E:\INTITA\InternetStore\DataAccess\obj\Debug\netcoreapp2.0\DataAccess.dll
 E:\INTITA\InternetStore\DataAccess\obj\Debug\netcoreapp2.0\DataAccess.pdb
+D:\INTITA\InternetStore\DataAccess\obj\Debug\netcoreapp2.0\DataAccess.csprojAssemblyReference.cache
+D:\INTITA\InternetStore\DataAccess\obj\Debug\netcoreapp2.0\DataAccess.csproj.CopyComplete

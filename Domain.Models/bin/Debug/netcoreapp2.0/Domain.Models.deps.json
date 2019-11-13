@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v2.0",
-    "signature": "da39a3ee5e6b4b0d3255bfef95601890afd80709"
+    "signature": ""
   },
   "compilationOptions": {},
   "targets": {
@@ -16,7 +16,10 @@
       },
       "Microsoft.Extensions.Identity.Stores/2.1.3.0": {
         "runtime": {
-          "Microsoft.Extensions.Identity.Stores.dll": {}
+          "Microsoft.Extensions.Identity.Stores.dll": {
+            "assemblyVersion": "2.1.3.0",
+            "fileVersion": "2.1.3.18207"
+          }
         }
       }
     }
