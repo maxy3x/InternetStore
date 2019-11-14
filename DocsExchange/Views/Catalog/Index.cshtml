@@ -9,8 +9,8 @@
 }
 
 @{
-    //    List<ProductView> prodList = ViewBag.Data;
-    string prodList = JsonConvert.SerializeObject(ViewBag.Data);
+    List<ProductView> prodList = ViewBag.Data;
+    //string prodList = JsonConvert.SerializeObject(ViewBag.Data);
     ProductsFilters filters = ViewBag.Filters;
 }
 
@@ -37,10 +37,11 @@
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: function (data) {
-                    console.log(data);
-                    
-                    var jstring = '@prodList';
-                    console.log(jstring);
+                    //console.log(data);
+
+                    @*var jstring = '@prodList';*@
+                    //var jsonstr = JSON.parse(jstring, "", value);
+                    //console.log(jstring);
                 },
                 error: function (response) {
                     console.log(response.responseText);
@@ -50,15 +51,6 @@
                 }
             })
         });
-
-        @*$(document).ready(function () {
-            var prodList = @prodList;
-            //for (property in prodList) {
-
-            //}
-
-        });*@
-
 
     </script>
 }
@@ -129,36 +121,35 @@
             </td>
             <td class="col-lg-7">
                 <table class="table col-lg-9">
-            <thead>
-                <tr>
-                    <th class="col-lg-2">Назва</th>
-                    <th class="col-lg-1">Тип товару</th>
-                    <th class="col-lg-1">Тип металу</th>
-                    <th class="col-lg-1">Колір</th>
-                    <th class="col-lg-1">Стать</th>
-                    <th class="col-lg-1">Вага</th>
-                    <th class="col-lg-1">Кількість</th>
-                    <th class="col-lg-1">Ціна</th>
-                </tr>
-            </thead>
-            <tbody id="productTable">
-                @*@foreach (ProductView item in prodList)
-                {
-                    <tr>
-                        <td class="col-lg-2">@Html.DisplayFor(modelItem => item.Name)</td>
-                        <td class="col-lg-1">@Html.DisplayFor(modelItem => item.ProductTypeName)</td>
-                        <td class="col-lg-1">@Html.DisplayFor(modelItem => item.ProductMetalName)</td>
-                        <td class="col-lg-1">@Html.DisplayFor(modelItem => item.ProductColorName)</td>
-                        <td class="col-lg-1">@Html.DisplayFor(modelItem => item.GenderName)</td>
-                        <td class="col-lg-1">@Html.DisplayFor(modelItem => item.Weight)</td>
-                        <td class="col-lg-1">@Html.DisplayFor(modelItem => item.Amount)</td>
-                        <td class="col-lg-1">@Html.DisplayFor(modelItem => item.Price)</td>
-                    </tr>
-                }*@
-            </tbody>
-        </table>
+                    <thead>
+                        <tr>
+                            <th class="col-lg-2">Назва</th>
+                            <th class="col-lg-1">Тип товару</th>
+                            <th class="col-lg-1">Тип металу</th>
+                            <th class="col-lg-1">Колір</th>
+                            <th class="col-lg-1">Стать</th>
+                            <th class="col-lg-1">Вага</th>
+                            <th class="col-lg-1">Кількість</th>
+                            <th class="col-lg-1">Ціна</th>
+                        </tr>
+                    </thead>
+                    <tbody id="productTable">
+                        @foreach (ProductView item in prodList)
+                        {
+                            <tr>
+                                <td class="col-lg-2">@Html.DisplayFor(modelItem => item.Name)</td>
+                                <td class="col-lg-1">@Html.DisplayFor(modelItem => item.ProductTypeName)</td>
+                                <td class="col-lg-1">@Html.DisplayFor(modelItem => item.ProductMetalName)</td>
+                                <td class="col-lg-1">@Html.DisplayFor(modelItem => item.ProductColorName)</td>
+                                <td class="col-lg-1">@Html.DisplayFor(modelItem => item.GenderName)</td>
+                                <td class="col-lg-1">@Html.DisplayFor(modelItem => item.Weight)</td>
+                                <td class="col-lg-1">@Html.DisplayFor(modelItem => item.Amount)</td>
+                                <td class="col-lg-1">@Html.DisplayFor(modelItem => item.Price)</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
                 <table class="table col-lg-9" id="prodTable">
-
                 </table>
             </td>
         </tr>

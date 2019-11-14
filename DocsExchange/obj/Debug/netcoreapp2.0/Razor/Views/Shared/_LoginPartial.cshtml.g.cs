@@ -92,12 +92,12 @@ using WebStore.Models.ManageViewModels;
             WriteLiteral("    ");
             EndContext();
             BeginContext(209, 493, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9a50bb4b376f424b808314bb2b5b1975", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "39a7d742434943dab9df57244d9d7979", async() => {
                 BeginContext(323, 86, true);
                 WriteLiteral("\r\n        <ul class=\"nav navbar-nav navbar-right\">\r\n            <li>\r\n                ");
                 EndContext();
                 BeginContext(409, 111, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "5abe5e22273a4e2a9e4e935941c65eaa", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "55f2a9afefba4a33a1ca8718c6c4e14f", async() => {
                     BeginContext(482, 4, true);
                     WriteLiteral("Ви: ");
                     EndContext();
@@ -171,7 +171,7 @@ else
             WriteLiteral("        <li>");
             EndContext();
             BeginContext(871, 69, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a604a16b8f3241c6b33f2bf36ae03364", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c0a3502cab9b42cea6ff590cb0677fcd", async() => {
                 BeginContext(930, 6, true);
                 WriteLiteral("Увійти");
                 EndContext();
