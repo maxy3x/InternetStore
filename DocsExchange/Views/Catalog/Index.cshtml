@@ -9,8 +9,9 @@
 }
 
 @{
-    List<ProductView> prodList = ViewBag.Data;
+    //List<ProductView> prodList = ViewBag.Data;
     //string prodList = JsonConvert.SerializeObject(ViewBag.Data);
+    string prodList = ViewBag.Data;
     ProductsFilters filters = ViewBag.Filters;
 }
 
@@ -23,7 +24,8 @@
 
     <script type="text/javascript">
 
-        $(".filter").change(function setStatus() {
+        //$(".filterJS").change(function setStatus() {
+        function Check() {
             var filtersArr = [];
             var elements = document.getElementsByClassName('filter');
             for (let item of elements) {
@@ -37,11 +39,7 @@
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: function (data) {
-                    //console.log(data);
-
-                    @*var jstring = '@prodList';*@
-                    //var jsonstr = JSON.parse(jstring, "", value);
-                    //console.log(jstring);
+                    loadGoods(data);
                 },
                 error: function (response) {
                     console.log(response.responseText);
@@ -50,23 +48,121 @@
                     console.log(response.responseText);
                 }
             })
+        };
+        //});
+        $(document).ready(function () {
+            loadFilters();
+            loadGoods();
         });
+        function loadFilters(){
+            $.ajax({
+                url: '@Url.Action("GetFilters", "Filter")',
+                type: "GET",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (filters) {
+                    rawFilters(filters);
+                }
+            });
+        }
+        function clearElem(elementID)
+        {
+            document.getElementById(elementID).innerHTML = "";
+        }
+        function rawFilters(filters) {
+            var ColorList = filters.ColorList;
+            var MetalList = filters.MetalList;
+            var GenderList = filters.GenderList;
+            var TypeList = filters.TypeList;
+            var StatusList = filters.StatusList;
+            var StatusAvList = filters.StatusAvList;
 
+            var tb = document.getElementById('table-filters');
+            var field = document.createElement('fieldset');
+            tb.appendChild(field);
+            var div = document.createElement('div');
+            div.setAttribute("id", "checkboxes");
+
+            addUl(div, field, MetalList, "metal_", "Тип металу:");
+            addUl(div, field, ColorList, "color_", "Колір:");
+            addUl(div, field, GenderList, "gender_", "Стать:");
+            addUl(div, field, TypeList, "type_", "Тип виробу:");
+            addUl(div, field, StatusList, "status_", "Новинки:");
+            addUl(div,field,StatusAvList,"statusav_","Наявніст:");
+        }
+        function rawGoods(data) {
+            clearElem("productTable");
+            var tbody = document.getElementById('productTable');
+            
+            data.forEach(element => {
+                var tr = document.createElement("tr");
+                tbody.appendChild(tr);
+                
+                console.log(element);
+                var td = document.createElement('td');
+                td.setAttribute("class","col-lg-2");
+                tr.appendChild(td);
+                td.innerHTML = element.Name;
+                
+            });
+        };
+        function addUl(div,field, list, pref, leb) {
+            var ul = document.createElement('ul');
+            var label = document.createElement('label');
+            field.appendChild(div);
+            label.innerHTML = leb;
+            div.appendChild(label);
+            ul.setAttribute("class", "ulCheckboxes");
+            div.appendChild(ul);
+            list.forEach(element => {
+                var li = document.createElement('li');
+                ul.appendChild(li);
+                var inp = document.createElement("INPUT");
+                inp.setAttribute("type", "checkbox");
+                inp.setAttribute("class", "filter");
+                inp.setAttribute("id", pref + element.Id);
+                inp.setAttribute("onclick", "Check()");
+                li.appendChild(inp);
+                li.append(element.Name);
+            });
+        }
+        function loadGoods(data = null) {
+            if (data == null) {
+                $.ajax({
+                    url: '@Url.Action("getGoods", "Catalog")',
+                    type: "GET",
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function (data) {
+                        rawGoods(data);
+                    }
+                });
+            } else {
+                rawGoods(data);
+            }
+        }
     </script>
 }
 <h2>Каталог товарів</h2>
 
-<table class="table col-lg-8">
+<table class="table col-lg-10">
     <thead>
         <tr>
-            <th class="col-lg-1">Фльтри</th>
-            <th class="col-lg-7"></th>
+            <th class="col-lg-1">Фільтри</th>
+            <th class="col-lg-2">Назва</th>
+            <th class="col-lg-1">Тип товару</th>
+            <th class="col-lg-1">Тип металу</th>
+            <th class="col-lg-1">Колір</th>
+            <th class="col-lg-1">Стать</th>
+            <th class="col-lg-1">Вага</th>
+            <th class="col-lg-1">Кількість</th>
+            <th class="col-lg-1">Ціна</th>
         </tr>
     </thead>
     <tbody>
         <tr>
-            <td class="col-lg-1">
-                @using (Html.BeginForm("CatalogFilter", "Filter", FormMethod.Post))
+            <td class="col-lg-1" id="table-filters">
+                @*@using (Html.BeginForm("CatalogFilter", "Filter", FormMethod.Post))
                 {
                     <fieldset>
                         <form asp-action="CatalogFilter">
@@ -117,39 +213,37 @@
                             </div>
                         </form>
                     </fieldset>
-                }
+                }*@
             </td>
-            <td class="col-lg-7">
+            <td class="col-lg-2" >
                 <table class="table col-lg-9">
                     <thead>
                         <tr>
-                            <th class="col-lg-2">Назва</th>
+                            @*<th class="col-lg-2">Назва</th>
                             <th class="col-lg-1">Тип товару</th>
                             <th class="col-lg-1">Тип металу</th>
                             <th class="col-lg-1">Колір</th>
                             <th class="col-lg-1">Стать</th>
                             <th class="col-lg-1">Вага</th>
                             <th class="col-lg-1">Кількість</th>
-                            <th class="col-lg-1">Ціна</th>
+                            <th class="col-lg-1">Ціна</th>*@
                         </tr>
                     </thead>
                     <tbody id="productTable">
-                        @foreach (ProductView item in prodList)
-                        {
-                            <tr>
-                                <td class="col-lg-2">@Html.DisplayFor(modelItem => item.Name)</td>
-                                <td class="col-lg-1">@Html.DisplayFor(modelItem => item.ProductTypeName)</td>
-                                <td class="col-lg-1">@Html.DisplayFor(modelItem => item.ProductMetalName)</td>
-                                <td class="col-lg-1">@Html.DisplayFor(modelItem => item.ProductColorName)</td>
-                                <td class="col-lg-1">@Html.DisplayFor(modelItem => item.GenderName)</td>
-                                <td class="col-lg-1">@Html.DisplayFor(modelItem => item.Weight)</td>
-                                <td class="col-lg-1">@Html.DisplayFor(modelItem => item.Amount)</td>
-                                <td class="col-lg-1">@Html.DisplayFor(modelItem => item.Price)</td>
-                            </tr>
-                        }
+                        @*@foreach (ProductView item in prodList)
+                            {
+                                <tr>
+                                    <td class="col-lg-2">@Html.DisplayFor(modelItem => item.Name)</td>
+                                    <td class="col-lg-1">@Html.DisplayFor(modelItem => item.ProductTypeName)</td>
+                                    <td class="col-lg-1">@Html.DisplayFor(modelItem => item.ProductMetalName)</td>
+                                    <td class="col-lg-1">@Html.DisplayFor(modelItem => item.ProductColorName)</td>
+                                    <td class="col-lg-1">@Html.DisplayFor(modelItem => item.GenderName)</td>
+                                    <td class="col-lg-1">@Html.DisplayFor(modelItem => item.Weight)</td>
+                                    <td class="col-lg-1">@Html.DisplayFor(modelItem => item.Amount)</td>
+                                    <td class="col-lg-1">@Html.DisplayFor(modelItem => item.Price)</td>
+                                </tr>
+                            }*@
                     </tbody>
-                </table>
-                <table class="table col-lg-9" id="prodTable">
                 </table>
             </td>
         </tr>

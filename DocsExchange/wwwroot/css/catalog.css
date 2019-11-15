@@ -1,11 +1,21 @@
-.checkboxgroup {
+.checkboxes {
     width: 20em;
     overflow: auto;
 }
-.checkboxgroup li {
-    list-style:none;
+
+.checkboxes li ul {
+    list-style: none;
 }
-.checkboxgroup label {
+.ulCheckboxes {
+    list-style: none;
+    padding-inline-start: 10px;
+}
+
+.checkboxes label {
     width: 12em;
     float: right;
+}
+
+input[type="checkbox"] {
+    margin: 4px 5px 0 0 !important;
 }

@@ -81,7 +81,7 @@ using WebStore.Models.ManageViewModels;
             WriteLiteral("</h2>\r\n\r\n");
             EndContext();
             BeginContext(151, 482, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "700e1f8611f749e3a55ba5afe574456a", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "d5883215ea164027b8fb564932fa046b", async() => {
                 BeginContext(189, 40, true);
                 WriteLiteral("\r\n    <input type=\"hidden\" name=\"userId\"");
                 EndContext();

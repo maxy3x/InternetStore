@@ -89,7 +89,7 @@ using WebStore.Models.ManageViewModels;
             WriteLiteral("</td>\r\n            <td>\r\n                ");
             EndContext();
             BeginContext(214, 97, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9d36b67fce3f4602bc566f3d149529ad", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "7f26ffc969db42d5afc86d01512f5407", async() => {
                 BeginContext(294, 13, true);
                 WriteLiteral("Права доступа");
                 EndContext();

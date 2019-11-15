@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Mvc;
 using WebStore.Models;
 using WebStore.Models.Filters;
 using WebStore.ViewModels;
+using Newtonsoft.Json;
 
 namespace WebStore.Controllers
 {
@@ -30,30 +31,36 @@ namespace WebStore.Controllers
             _productBusinessLogic = productBusinessLogic;
             _productImagesBusinessLogic = productImagesBusinessLogic;
         }
+
+        [HttpGet]
+        public string getGoods()
+        {
+            return JsonConvert.SerializeObject(_productBusinessLogic.GetAllActive().Select(_mapper.Map<ProductView>).ToList());
+        }
         // GET
         public IActionResult Index()
         {
-            var _colorRep = new ProductColorRepository(_context);
-            var _metalRep = new ProductMetalRepository(_context);
-            var _typeRep = new ProductTypeRepository(_context);
-            var _statusRep = new ProductStatusRepository(_context);
-            var _statusAvRep = new ProductAvStatusRepository(_context);
-            var _genderRep = new GenderRepository(_context);
+            //var _colorRep = new ProductColorRepository(_context);
+            //var _metalRep = new ProductMetalRepository(_context);
+            //var _typeRep = new ProductTypeRepository(_context);
+            //var _statusRep = new ProductStatusRepository(_context);
+            //var _statusAvRep = new ProductAvStatusRepository(_context);
+            //var _genderRep = new GenderRepository(_context);
 
             try
             {
-                var filters = new ProductsFilters()
-                {
-                    ColorList = _colorRep.GetAllAvailable().Select(_mapper.Map<ProductColorView>),
-                    MetalList = _metalRep.GetAllAvailable(),
-                    GenderList = _genderRep.GetAllAvailable(),
-                    TypeList = _typeRep.GetAllAvailable(),
-                    StatusList = _statusRep.GetAllAvailable(),
-                    StatusAvList = _statusAvRep.GetAllAvailable()
-                };
+                //var filters = new ProductsFilters()
+                //{
+                //    ColorList = _colorRep.GetAllAvailable().Select(_mapper.Map<ProductColorView>),
+                //    MetalList = _metalRep.GetAllAvailable(),
+                //    GenderList = _genderRep.GetAllAvailable(),
+                //    TypeList = _typeRep.GetAllAvailable(),
+                //    StatusList = _statusRep.GetAllAvailable(),
+                //    StatusAvList = _statusAvRep.GetAllAvailable()
+                //};
 
-                ViewBag.Data = _productBusinessLogic.GetAllActive().Select(_mapper.Map<ProductView>).ToList();
-                ViewBag.Filters = filters;
+                //ViewBag.Data = JsonConvert.SerializeObject(_productBusinessLogic.GetAllActive().Select(_mapper.Map<ProductView>).ToList());
+                //ViewBag.Filters = filters;
                 
                 return View();
             }

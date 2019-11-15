@@ -25,10 +25,34 @@ namespace WebStore.Controllers
             _productBusinessLogic = productBusinessLogic;
             _mapper = mapper;
         }
+
+        [HttpGet]
+        public string GetFilters()
+        {
+            var _colorRep = new ProductColorRepository(_context);
+            var _metalRep = new ProductMetalRepository(_context);
+            var _typeRep = new ProductTypeRepository(_context);
+            var _statusRep = new ProductStatusRepository(_context);
+            var _statusAvRep = new ProductAvStatusRepository(_context);
+            var _genderRep = new GenderRepository(_context);
+
+
+            var filters = new ProductsFilters()
+            {
+                ColorList = _colorRep.GetAllAvailable().Select(_mapper.Map<ProductColorView>),
+                MetalList = _metalRep.GetAllAvailable(),
+                GenderList = _genderRep.GetAllAvailable(),
+                TypeList = _typeRep.GetAllAvailable(),
+                StatusList = _statusRep.GetAllAvailable(),
+                StatusAvList = _statusAvRep.GetAllAvailable()
+            };
+
+            ViewBag.Data = JsonConvert.SerializeObject(filters);
+            return ViewBag.Data;
+        }
+
         [HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public List<ProductView> Filter([FromBody] string filters)
-        public List<ProductView> Filter([FromBody] string filters)
+        public string Filter([FromBody] string filters)
         {
             List<FiltersView> filtersView = JsonConvert.DeserializeObject<List<FiltersView>>(filters);
             IEnumerable<ProductColorView> colorFilter = GetColorFilters(filtersView).Select(_mapper.Map<ProductColorView>);
@@ -44,10 +68,11 @@ namespace WebStore.Controllers
                 models.Add(_mapper.Map<ProductView>(item));
             }
 
-            ViewBag.Data = models.OrderBy(x => x.Name).ToList();
+            //ViewBag.Data = models.OrderBy(x => x.Name).ToList();
             //ViewBag.Filters = new ProductsFilters() { };
             //return RedirectToAction("Index", "Catalog");
-
+            //string prodList = JsonConvert.SerializeObject(ViewBag.Data);
+            ViewBag.Data = JsonConvert.SerializeObject(models.OrderBy(x => x.Name).ToList());
             return ViewBag.Data;
         }
         private bool FilterByProductName(Product @item, string prodFilter)
@@ -61,15 +86,18 @@ namespace WebStore.Controllers
                 return true;
             return false;
         }
-        public IEnumerable<ProductColor> GetColorFilters(List<FiltersView> filtersView) {
+        public IEnumerable<ProductColor> GetColorFilters(List<FiltersView> filtersView)
+        {
             var _colorRep = new ProductColorRepository(_context);
             List<ProductColor> colorFilter = new List<ProductColor> { };
             foreach (FiltersView item in filtersView)
             {
-                if (item.Checked) { 
+                if (item.Checked)
+                {
                     string[] result = item.Id.Split(new char[] { '_' }, StringSplitOptions.None);
-                    
-                    if((result[1] != null) && (result[0] == "color")) { 
+
+                    if ((result[1] != null) && (result[0] == "color"))
+                    {
                         colorFilter.Add(_colorRep.GetById(Int32.Parse(result[1])));
                     }
                 }
@@ -78,10 +106,11 @@ namespace WebStore.Controllers
         }
         private bool FilterByColor(Product @item, IEnumerable<ProductColorView> filter)
         {
-            if (!filter.Any()){return true;}
-            foreach (ProductColorView color in filter) { 
-            if (@item != null && item.ProductColor == color.Id)
-                return true;
+            if (!filter.Any()) { return true; }
+            foreach (ProductColorView color in filter)
+            {
+                if (@item != null && item.ProductColor == color.Id)
+                    return true;
             }
             return false;
         }
