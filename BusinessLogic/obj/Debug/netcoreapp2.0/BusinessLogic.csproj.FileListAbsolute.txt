@@ -55,11 +55,11 @@ E:\INTITA\InternetStore\BusinessLogic\bin\Debug\netcoreapp2.0\DataAccess.dll
 E:\INTITA\InternetStore\BusinessLogic\bin\Debug\netcoreapp2.0\Domain.Models.dll
 E:\INTITA\InternetStore\BusinessLogic\bin\Debug\netcoreapp2.0\DataAccess.pdb
 E:\INTITA\InternetStore\BusinessLogic\bin\Debug\netcoreapp2.0\Domain.Models.pdb
-E:\INTITA\InternetStore\BusinessLogic\obj\Debug\netcoreapp2.0\BusinessLogic.csprojResolveAssemblyReference.cache
-E:\INTITA\InternetStore\BusinessLogic\obj\Debug\netcoreapp2.0\BusinessLogic.csproj.CoreCompileInputs.cache
 E:\INTITA\InternetStore\BusinessLogic\obj\Debug\netcoreapp2.0\BusinessLogic.AssemblyInfoInputs.cache
 E:\INTITA\InternetStore\BusinessLogic\obj\Debug\netcoreapp2.0\BusinessLogic.AssemblyInfo.cs
 E:\INTITA\InternetStore\BusinessLogic\obj\Debug\netcoreapp2.0\BusinessLogic.dll
 E:\INTITA\InternetStore\BusinessLogic\obj\Debug\netcoreapp2.0\BusinessLogic.pdb
 D:\INTITA\InternetStore\BusinessLogic\obj\Debug\netcoreapp2.0\BusinessLogic.csprojAssemblyReference.cache
 D:\INTITA\InternetStore\BusinessLogic\obj\Debug\netcoreapp2.0\BusinessLogic.csproj.CopyComplete
+E:\INTITA\InternetStore\BusinessLogic\obj\Debug\netcoreapp2.0\BusinessLogic.csprojAssemblyReference.cache
+E:\INTITA\InternetStore\BusinessLogic\obj\Debug\netcoreapp2.0\BusinessLogic.csproj.CopyComplete

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\INTITA\\InternetStore\\DocsExchange\\WebStore.csproj": {}
+    "E:\\INTITA\\InternetStore\\DocsExchange\\WebStore.csproj": {}
   },
   "projects": {
-    "D:\\INTITA\\InternetStore\\BusinessLogic\\BusinessLogic.csproj": {
+    "E:\\INTITA\\InternetStore\\BusinessLogic\\BusinessLogic.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\INTITA\\InternetStore\\BusinessLogic\\BusinessLogic.csproj",
+        "projectUniqueName": "E:\\INTITA\\InternetStore\\BusinessLogic\\BusinessLogic.csproj",
         "projectName": "BusinessLogic",
-        "projectPath": "D:\\INTITA\\InternetStore\\BusinessLogic\\BusinessLogic.csproj",
+        "projectPath": "E:\\INTITA\\InternetStore\\BusinessLogic\\BusinessLogic.csproj",
         "packagesPath": "C:\\Users\\Max\\.nuget\\packages\\",
-        "outputPath": "D:\\INTITA\\InternetStore\\BusinessLogic\\obj\\",
+        "outputPath": "E:\\INTITA\\InternetStore\\BusinessLogic\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\",
@@ -32,11 +32,11 @@
         "frameworks": {
           "netcoreapp2.0": {
             "projectReferences": {
-              "D:\\INTITA\\InternetStore\\DataAccess\\DataAccess.csproj": {
-                "projectPath": "D:\\INTITA\\InternetStore\\DataAccess\\DataAccess.csproj"
+              "E:\\INTITA\\InternetStore\\DataAccess\\DataAccess.csproj": {
+                "projectPath": "E:\\INTITA\\InternetStore\\DataAccess\\DataAccess.csproj"
               },
-              "D:\\INTITA\\InternetStore\\Domain.Models\\Domain.Models.csproj": {
-                "projectPath": "D:\\INTITA\\InternetStore\\Domain.Models\\Domain.Models.csproj"
+              "E:\\INTITA\\InternetStore\\Domain.Models\\Domain.Models.csproj": {
+                "projectPath": "E:\\INTITA\\InternetStore\\Domain.Models\\Domain.Models.csproj"
               }
             }
           }
@@ -71,14 +71,14 @@
         }
       }
     },
-    "D:\\INTITA\\InternetStore\\DataAccess\\DataAccess.csproj": {
+    "E:\\INTITA\\InternetStore\\DataAccess\\DataAccess.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\INTITA\\InternetStore\\DataAccess\\DataAccess.csproj",
+        "projectUniqueName": "E:\\INTITA\\InternetStore\\DataAccess\\DataAccess.csproj",
         "projectName": "DataAccess",
-        "projectPath": "D:\\INTITA\\InternetStore\\DataAccess\\DataAccess.csproj",
+        "projectPath": "E:\\INTITA\\InternetStore\\DataAccess\\DataAccess.csproj",
         "packagesPath": "C:\\Users\\Max\\.nuget\\packages\\",
-        "outputPath": "D:\\INTITA\\InternetStore\\DataAccess\\obj\\",
+        "outputPath": "E:\\INTITA\\InternetStore\\DataAccess\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\",
@@ -99,8 +99,8 @@
         "frameworks": {
           "netcoreapp2.0": {
             "projectReferences": {
-              "D:\\INTITA\\InternetStore\\Domain.Models\\Domain.Models.csproj": {
-                "projectPath": "D:\\INTITA\\InternetStore\\Domain.Models\\Domain.Models.csproj"
+              "E:\\INTITA\\InternetStore\\Domain.Models\\Domain.Models.csproj": {
+                "projectPath": "E:\\INTITA\\InternetStore\\Domain.Models\\Domain.Models.csproj"
               }
             }
           }
@@ -169,14 +169,14 @@
         }
       }
     },
-    "D:\\INTITA\\InternetStore\\DocsExchange\\WebStore.csproj": {
+    "E:\\INTITA\\InternetStore\\DocsExchange\\WebStore.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\INTITA\\InternetStore\\DocsExchange\\WebStore.csproj",
+        "projectUniqueName": "E:\\INTITA\\InternetStore\\DocsExchange\\WebStore.csproj",
         "projectName": "WebStore",
-        "projectPath": "D:\\INTITA\\InternetStore\\DocsExchange\\WebStore.csproj",
+        "projectPath": "E:\\INTITA\\InternetStore\\DocsExchange\\WebStore.csproj",
         "packagesPath": "C:\\Users\\Max\\.nuget\\packages\\",
-        "outputPath": "D:\\INTITA\\InternetStore\\DocsExchange\\obj\\",
+        "outputPath": "E:\\INTITA\\InternetStore\\DocsExchange\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\",
@@ -197,11 +197,11 @@
         "frameworks": {
           "netcoreapp2.0": {
             "projectReferences": {
-              "D:\\INTITA\\InternetStore\\BusinessLogic\\BusinessLogic.csproj": {
-                "projectPath": "D:\\INTITA\\InternetStore\\BusinessLogic\\BusinessLogic.csproj"
+              "E:\\INTITA\\InternetStore\\BusinessLogic\\BusinessLogic.csproj": {
+                "projectPath": "E:\\INTITA\\InternetStore\\BusinessLogic\\BusinessLogic.csproj"
               },
-              "D:\\INTITA\\InternetStore\\DataAccess\\DataAccess.csproj": {
-                "projectPath": "D:\\INTITA\\InternetStore\\DataAccess\\DataAccess.csproj"
+              "E:\\INTITA\\InternetStore\\DataAccess\\DataAccess.csproj": {
+                "projectPath": "E:\\INTITA\\InternetStore\\DataAccess\\DataAccess.csproj"
               }
             }
           }
@@ -290,14 +290,14 @@
         }
       }
     },
-    "D:\\INTITA\\InternetStore\\Domain.Models\\Domain.Models.csproj": {
+    "E:\\INTITA\\InternetStore\\Domain.Models\\Domain.Models.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\INTITA\\InternetStore\\Domain.Models\\Domain.Models.csproj",
+        "projectUniqueName": "E:\\INTITA\\InternetStore\\Domain.Models\\Domain.Models.csproj",
         "projectName": "Domain.Models",
-        "projectPath": "D:\\INTITA\\InternetStore\\Domain.Models\\Domain.Models.csproj",
+        "projectPath": "E:\\INTITA\\InternetStore\\Domain.Models\\Domain.Models.csproj",
         "packagesPath": "C:\\Users\\Max\\.nuget\\packages\\",
-        "outputPath": "D:\\INTITA\\InternetStore\\Domain.Models\\obj\\",
+        "outputPath": "E:\\INTITA\\InternetStore\\Domain.Models\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\",
